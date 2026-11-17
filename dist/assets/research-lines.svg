@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="300" viewBox="0 0 520 300" fill="none">
+ <defs><pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse"><path d="M26 0H0v26" stroke="#dbe8fa" stroke-width=".7"/></pattern><linearGradient id="line" x1="65" y1="230" x2="430" y2="60"><stop stop-color="#1d4e91"/><stop offset="1" stop-color="#79b6ff"/></linearGradient></defs>
+ <rect width="520" height="300" fill="url(#grid)"/>
+ <g stroke="#abc4e8"><path d="M45 244C145 236 116 89 251 125S355 210 466 53" stroke-dasharray="5 7"/><path d="M45 244C150 220 171 249 239 181S375 99 466 53" stroke-dasharray="5 7"/><path d="M45 244C101 185 164 230 239 181S356 41 466 53" stroke-dasharray="5 7"/></g>
+ <path d="M45 244C151 229 168 143 239 181S363 93 466 53" stroke="url(#line)" stroke-width="3"/>
+ <g fill="#f7faff" stroke="#a3c4ef"><circle cx="45" cy="244" r="15"/><circle cx="239" cy="181" r="18"/><circle cx="466" cy="53" r="23"/></g>
+ <g fill="#2a68b6"><circle cx="45" cy="244" r="4"/><circle cx="239" cy="181" r="5"/><circle cx="466" cy="53" r="6"/></g>
+ <path d="M116 57h41m-20-20v40M373 240h41m-20-20v40" stroke="#bad0ec"/>
+</svg>

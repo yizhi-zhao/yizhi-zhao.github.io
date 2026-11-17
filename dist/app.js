@@ -19,16 +19,15 @@
     languageButton.lang = language === 'en' ? 'zh-CN' : 'en';
     languageButton.setAttribute('aria-label', language === 'en' ? 'Switch to Chinese' : '切换为英文');
     nav.setAttribute('aria-label', language === 'en' ? 'Main navigation' : '主导航');
-    document.querySelector('.profile-photo').alt = language === 'en' ? 'Portrait of Yizhi Zhao' : 'Yizhi Zhao 的个人照片';
-    document.querySelector('.portrait-link').setAttribute('aria-label', language === 'en' ? 'View full-size portrait of Yizhi Zhao' : '查看 Yizhi Zhao 的原尺寸照片');
-    document.querySelector('.profile-links').setAttribute('aria-label', language === 'en' ? 'Contact and profiles' : '联系方式与个人资料');
-    copyStatus.textContent = '';
-    citationToggle.textContent = citationPanel.hidden
+    document.querySelector('.profile-photo')?.setAttribute('alt', language === 'en' ? 'Portrait of Yizhi Zhao' : 'Yizhi Zhao 的个人照片');
+    document.querySelector('.portrait-link')?.setAttribute('aria-label', language === 'en' ? 'View full-size portrait of Yizhi Zhao' : '查看 Yizhi Zhao 的原尺寸照片');
+    document.querySelector('.profile-links')?.setAttribute('aria-label', language === 'en' ? 'Contact and profiles' : '联系方式与个人资料');
+    if (copyStatus) copyStatus.textContent = '';
+    if (citationToggle && citationPanel) citationToggle.textContent = citationPanel.hidden
       ? (language === 'en' ? 'Citation' : '引用')
       : (language === 'en' ? 'Hide citation' : '收起引用');
-    document.title = language === 'en'
-      ? 'Yizhi Zhao | EPFL'
-      : 'Yizhi Zhao | 个人主页';
+    const titles = { home: ['Yizhi Zhao | EPFL', 'Yizhi Zhao | 个人主页'], research: ['Research | Yizhi Zhao', '研究项目 | Yizhi Zhao'], publications: ['Publications | Yizhi Zhao', '论文发表 | Yizhi Zhao'], background: ['Background | Yizhi Zhao', '个人经历 | Yizhi Zhao'] };
+    document.title = (titles[document.body.dataset.page] || titles.home)[language === 'en' ? 0 : 1];
     try { localStorage.setItem('yizhi-portfolio-language', language); } catch { /* Browsing with storage disabled is supported. */ }
   }
 
@@ -58,7 +57,7 @@
     if (event.matches) closeMenu();
   });
 
-  citationToggle.addEventListener('click', () => {
+  citationToggle?.addEventListener('click', () => {
     citationPanel.hidden = !citationPanel.hidden;
     citationToggle.setAttribute('aria-expanded', String(!citationPanel.hidden));
     citationToggle.textContent = citationPanel.hidden
@@ -66,7 +65,7 @@
       : (language === 'en' ? 'Hide citation' : '收起引用');
   });
 
-  document.querySelector('#copy-citation').addEventListener('click', async () => {
+  document.querySelector('#copy-citation')?.addEventListener('click', async () => {
     const citationText = document.querySelector('#citation-text');
     try {
       if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
@@ -84,18 +83,15 @@
     }
   });
 
-  if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        nav.querySelectorAll('a').forEach(link => {
-          if (link.hash === `#${entry.target.id}`) link.setAttribute('aria-current', 'location');
-          else link.removeAttribute('aria-current');
-        });
-      });
-    }, { rootMargin: '-15% 0px -55% 0px', threshold: 0 });
-    document.querySelectorAll('#research, #publications, #about').forEach(section => observer.observe(section));
+  let scrollFrame;
+  function updateProgress() {
+    scrollFrame = undefined;
+    const available = document.documentElement.scrollHeight - window.innerHeight;
+    document.documentElement.style.setProperty('--scroll-progress', String(available > 0 ? Math.min(1, Math.max(0, window.scrollY / available)) : 0));
   }
+  window.addEventListener('scroll', () => { if (!scrollFrame) scrollFrame = requestAnimationFrame(updateProgress); }, { passive: true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
 
   document.querySelector('#year').textContent = String(new Date().getFullYear());
   let savedLanguage = 'en';

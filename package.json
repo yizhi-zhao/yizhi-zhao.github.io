@@ -5,7 +5,8 @@
   "type": "module",
   "description": "Yizhi Zhao's research and engineering portfolio",
   "scripts": {
-    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build-pages.mjs",
+    "dev": "node scripts/build-pages.mjs && node scripts/serve.mjs",
     "start": "node scripts/serve.mjs"
   }
 }
