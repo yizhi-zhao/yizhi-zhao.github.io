@@ -65,7 +65,7 @@ function explore() {
 for (const route of routes) {
   let content;
   if (route.key === 'home') {
-    content = `<div class="campus-cover" role="img" aria-label="EPFL campus photographed by Yizhi on his first day"><div class="cover-grid" aria-hidden="true"></div><div class="cover-caption"><span>EPFL</span><span>LAUSANNE, SWITZERLAND</span></div><span class="cover-scan" aria-hidden="true"></span></div>${fragments.overview}${explore()}${fragments.contact}${fragments.personal}`;
+    content = `<div class="campus-cover" role="img" aria-label="EPFL campus photographed by Yizhi on his first day"><div class="cover-grid" aria-hidden="true"></div><div class="cover-caption"><span>EPFL</span><span>LAUSANNE, SWITZERLAND</span></div><span class="cover-scan" aria-hidden="true"></span></div>${fragments.overview}${explore()}${fragments.personal}${fragments.contact}`;
   } else {
     let body = fragments[route.key];
     if (route.key !== 'background') body = body.replace(/<h2 id="(?:research|publications)-title"[^>]*>[\s\S]*?<\/h2>/, '').replace(/aria-labelledby="(?:research|publications)-title"/, 'aria-labelledby="page-title"');
