@@ -38,6 +38,8 @@ npm run dev
 - `dist/assets/yizhi-zhao.jpg`：用户提供的原始个人照片，通过 CSS 控制显示尺寸与比例。
 - `dist/assets/epfl-campus.jpg`：首页 EPFL 校园背景。
 - `dist/assets/research-lines.svg`：代码绘制的概念性研究插图，不代表实验数据。
+- `dist/assets/research/`：四个研究项目的独立概念示意图，分别对应地理泛化、时序规划、感知受限场景生成、路肩车道控制；并非实验截图或结果。
+- `dist/assets/logos/`：Bosch、EPFL、VITA、东南大学和 ITSC 2026 的原始标志，来源记录于 `SOURCES.md`。显示时保持原色和原比例。
 - `dist/assets/favicon.svg`：浏览器标签页图标。
 
 网站使用 HTML、CSS 和原生 JavaScript。页面本身不请求任何个人数据，也不需要数据库。语言偏好仅保存在访客的浏览器里。字体使用系统字体与本机衬线字体，无第三方字体请求。邮件链接使用访客的邮件客户端；没有额外的联系表单后端。
@@ -49,6 +51,8 @@ npm run dev
 经历、日期、项目和论文信息均来自提供的 `Graduate_CV_Yizhi.pdf`，求职目标与照片来自本次沟通。未添加未经提供的论文链接、DOI 或实验结果。
 
 **Research 内容约束：** 四个研究标题、英文项目概述、单位、导师、日期和成果均使用 CV 完整原文，仅合并 PDF 换行。标题在中英文页面中均保持 CV 的英文原题；中文正文提供完整对应翻译。后续不要擅自改写、缩写、概括标题或研究内容，更新必须以用户提供的新 CV 或明确文字为准。
+
+配图与标志由 `scripts/build-pages.mjs` 在生成页面时加入，映射位于 `researchVisuals` 和 `organizationLogos`；研究原文仍独立保存在 `content/research.html`，不会因更换图片而修改。Publication 的会议标志位于 `decoratePublications` 中。
 
 - DrivoR 项目的 23% EPDMS 提升仅指 navmini 子集；navtrain 全量验证仍为后续工作。
 - 地理泛化评估项目为进行中。

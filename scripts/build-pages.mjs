@@ -10,8 +10,41 @@ const routes = [
   { key: 'publications', file: 'publications.html', en: 'Publications', zh: '论文', title: 'Publications' },
   { key: 'background', file: 'background.html', en: 'Background', zh: '经历', title: 'Background' }
 ];
-const fragments = Object.fromEntries(await Promise.all(['overview', 'research', 'publications', 'background', 'contact'].map(async name => [name, await readFile(path.join(root, 'content', `${name}.html`), 'utf8')])));
+const fragments = Object.fromEntries(await Promise.all(['overview', 'research', 'publications', 'background', 'contact'].map(async name => [name, (await readFile(path.join(root, 'content', `${name}.html`), 'utf8')).replaceAll('\r\n', '\n')])));
 const bilingual = (tag, en, zh, attributes = '') => `<${tag}${attributes} data-en="${en}" data-zh="${zh}">${en}</${tag}>`;
+
+// Presentation assets are separate from the CV text in content/.
+const researchVisuals = {
+  'Geographic Generalization in End-to-End Planning at Worldwide Scale': { file: 'geographic-generalization.svg', en: 'Concept illustration of geographic generalization across driving environments', zh: '不同驾驶环境间地理泛化的概念示意图' },
+  'Pushing the Limits of State-of-the-Art End-to-End Driving Planners': { file: 'temporal-planning.svg', en: 'Concept illustration of temporal token fusion and future scene prediction', zh: '时序 token 融合与未来场景预测的概念示意图' },
+  'Autonomous Vehicles Test Scenario Generation in Perception-Limited Environments': { file: 'perception-scenarios.svg', en: 'Concept illustration of sensor uncertainty and safety-critical driving scenarios', zh: '传感器不确定性与安全关键驾驶场景的概念示意图' },
+  'Control of Connected and Autonomous Vehicles Utilizing Road Shoulder Lane Based on Deep Reinforcement Learning': { file: 'shoulder-lane-control.svg', en: 'Concept illustration of reinforcement learning for highway shoulder-lane control', zh: '强化学习高速公路路肩车道控制的概念示意图' }
+};
+const organizationLogos = {
+  'Bosch China': { file: 'bosch.svg', alt: 'Bosch logo' },
+  'VITA Lab, EPFL': { file: 'vita-epfl.png', alt: 'EPFL VITA Lab logo' },
+  'EPFL': { file: 'epfl.svg', alt: 'EPFL logo' },
+  'Southeast University': { file: 'southeast-university.svg', alt: 'Southeast University logo' }
+};
+function decorateResearch(body) {
+  return body.replace(/<article class="project"([^>]*)>([\s\S]*?)<\/article>/g, (original, attributes, copy) => {
+    const title = copy.match(/<h3[^>]*>([^<]+)<\/h3>/)?.[1];
+    const visual = researchVisuals[title];
+    if (!visual) return original;
+    return `<article class="project project-with-image"${attributes}><figure class="project-visual"><img src="assets/research/${visual.file}" width="560" height="400" alt="${visual.en}" data-alt-en="${visual.en}" data-alt-zh="${visual.zh}" loading="lazy" decoding="async"></figure><div class="project-copy">${copy}</div></article>`;
+  });
+}
+function decoratePublications(body) {
+  return body.replace(/<article class="publication"([^>]*)>([\s\S]*?)<\/article>/g, (_, attributes, copy) => `<article class="publication publication-with-logo"${attributes}><div class="venue-logo"><img src="assets/logos/itsc-2026.png" width="4776" height="2836" alt="IEEE ITSC 2026 conference logo" loading="lazy" decoding="async"></div><div class="publication-copy">${copy}</div></article>`);
+}
+function decorateBackground(body) {
+  return body.replace(/<div class="entry">(<span class="date"[\s\S]*?<\/span>)<div>([\s\S]*?)<\/div><\/div>/g, (original, date, copy) => {
+    const name = copy.match(/<h3[^>]*>([^<]+)<\/h3>/)?.[1];
+    const logo = organizationLogos[name];
+    if (!logo) return original;
+    return `<div class="entry entry-with-logo">${date}<div class="entry-copy"><div class="entry-logo"><img src="assets/logos/${logo.file}" alt="${logo.alt}" loading="lazy" decoding="async"></div>${copy}</div></div>`;
+  });
+}
 
 function pageHeader(route) {
   const zh = route.key === 'research' ? '研究项目' : route.key === 'publications' ? '论文发表' : '研究与工作经历';
@@ -37,6 +70,9 @@ for (const route of routes) {
     let body = fragments[route.key];
     if (route.key !== 'background') body = body.replace(/<h2 id="(?:research|publications)-title"[^>]*>[\s\S]*?<\/h2>/, '').replace(/aria-labelledby="(?:research|publications)-title"/, 'aria-labelledby="page-title"');
     body = body.replace('href="#paper-itsc2026"', 'href="publications.html#paper-itsc2026"');
+    if (route.key === 'research') body = decorateResearch(body);
+    if (route.key === 'publications') body = decoratePublications(body);
+    if (route.key === 'background') body = decorateBackground(body);
     content = `${pageHeader(route)}${body}<nav class="page-bottom-nav" aria-label="Other pages">${routes.filter(item => item.key !== route.key).map(item => bilingual('a', `${item.en} →`, `${item.zh} →`, ` href="${item.file}" data-page-link`)).join('')}</nav>`;
   }
   const nav = routes.map(item => `<a href="${item.file}" data-page-link${route.key === item.key ? ' aria-current="page"' : ''} data-en="${item.en}" data-zh="${item.zh}">${item.en}</a>`).join('');
