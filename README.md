@@ -2,6 +2,8 @@
 
 适用于求职、实习和 PhD 申请的个人网站，使用蓝色主题、EPFL 校园背景、轻量页面切换动画和独立子页面。英文为默认语言，支持中文切换，手机和桌面均可浏览。页面不展示奖项与荣誉。
 
+线上地址：<https://yizhi-zhao.github.io/>。GitHub 仓库：<https://github.com/yizhi-zhao/yizhi-zhao.github.io>。
+
 首页将个人介绍与照片卡片并排放置，手机上改为上下排列。默认显示用户提供的户外照 `Yizhi_pic.jpg`（1079 × 1619 像素），点击照片翻面后显示原来的正式照 `Yizhi-2_blue_bg1.jpg`（1717 × 1948 像素），以“校园之外 / 校园之中”作对照；再次点击翻回。可用 Tab 聚焦照片、Enter 或空格翻面，开启减少动态效果时即时切换。原始图片不重新压缩，点击不会打开图片或跳转。全站正文约 17px，导航与按钮约 16–17px，辅助文字至少 14px；校园装饰性地名为 11–12px。研究、论文和经历分别位于 `research.html`、`publications.html`、`background.html`；它们是实际 HTML 文件，可以直接访问、刷新和分享。首页三个入口只保留标题、图形和箭头，不添加会变化的内容摘要。
 
 ## 替换 EPFL 背景图
@@ -47,6 +49,22 @@ npm run dev
 - `dist/assets/research/`：四个研究项目的独立概念示意图，分别对应地理泛化、时序规划、感知受限场景生成、路肩车道控制；并非实验截图或结果。
 - `dist/assets/logos/`：Bosch、EPFL、VITA、东南大学和 ITSC 2026 的原始标志，来源记录于 `SOURCES.md`。显示时保持原色和原比例。
 - `dist/assets/favicon.svg`：浏览器标签页图标。
+
+首页 Email、CV、LinkedIn、GitHub 的 SVG 图标写在 `content/overview.html` 的 `.profile-links` 中，样式在 `dist/styles.css`。双语属性放在链接内的文字 `<span>` 上；不要放到包含 SVG 的 `<a>` 上，因为语言切换会替换带双语属性元素的全部内容。修改后运行构建，不要只修改生成的 `dist/index.html`。
+
+## 提交并更新网站
+
+PowerShell 需要先进入实际 Git 仓库，再执行 Git 命令：
+
+```powershell
+cd "C:\Users\60310\Desktop\personal_web\yizhi-portfolio"
+npm.cmd run build
+git add .
+git commit -m "Update website"
+git push origin main
+```
+
+`origin` 应指向 `https://github.com/yizhi-zhao/yizhi-zhao.github.io.git`，可用 `git remote -v` 检查。推送到 `main` 后，现有 GitHub Actions 会自动构建并部署。
 
 网站使用 HTML、CSS 和原生 JavaScript。页面本身不请求任何个人数据，也不需要数据库。语言偏好仅保存在访客的浏览器里。字体使用系统字体与本机衬线字体，无第三方字体请求。邮件链接使用访客的邮件客户端；没有额外的联系表单后端。
 

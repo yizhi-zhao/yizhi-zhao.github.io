@@ -3,7 +3,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const origin = 'https://patrickstarh.github.io/yizhi-portfolio/';
+const origin = 'https://yizhi-zhao.github.io/';
 const routes = [
   { key: 'home', file: 'index.html', en: 'Home', zh: '首页', title: 'Yizhi Zhao' },
   { key: 'research', file: 'research.html', en: 'Research', zh: '研究', title: 'Research' },
