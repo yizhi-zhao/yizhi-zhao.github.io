@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8f9f5">
+  <meta name="theme-color" content="#f7f9fd">
   <meta name="description" content="Yizhi Zhao — M.Sc. student at EPFL and project student at VITA Lab. Research in autonomous driving, end-to-end planning, world models, and reinforcement learning.">
   <meta property="og:title" content="Yizhi Zhao — Autonomous Driving & Physical AI">
   <meta property="og:description" content="Research and engineering at the intersection of autonomous driving, world models, and reinforcement learning.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://yizhi-zhao-research-2026.leaflessflask16.chatgpt.site">
+  <meta property="og:url" content="https://patrickstarh.github.io/yizhi-portfolio/">
   <title>Yizhi Zhao — Autonomous Driving & Physical AI</title>
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
@@ -35,7 +35,10 @@
   <main id="main" class="container">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content">
-        <div class="eyebrow"><span class="status-dot" aria-hidden="true"></span><span data-en="Autonomous driving · Physical AI" data-zh="自动驾驶 · 物理智能">Autonomous driving · Physical AI</span></div>
+        <div class="hero-identity">
+          <img class="profile-photo" src="assets/yizhi-zhao.jpg" width="96" height="112" alt="Portrait of Yizhi Zhao" fetchpriority="high">
+          <div><div class="eyebrow"><span class="status-dot" aria-hidden="true"></span><span data-en="Autonomous driving · Physical AI" data-zh="自动驾驶 · 物理智能">Autonomous driving · Physical AI</span></div><p class="identity-name">Yizhi Zhao</p><p class="identity-affiliation">EPFL · VITA Lab</p></div>
+        </div>
         <h1 id="hero-title"><span data-en="Learning to drive." data-zh="让智能学会驾驶，">Learning to drive.</span><br><span class="quiet" data-en="Beyond the familiar." data-zh="走向未知的世界。">Beyond the familiar.</span></h1>
         <p class="hero-description"><span data-en="I'm Yizhi, an M.Sc. student at" data-zh="我是 Yizhi，就读于">I'm Yizhi, an M.Sc. student at</span> <strong>EPFL</strong> <span data-en="and project student at" data-zh="硕士项目，并在">and project student at</span> <strong>VITA Lab</strong><span data-en=". I work on end-to-end driving, world models, and reinforcement learning — towards autonomous systems that generalize to new environments." data-zh="开展研究，关注端到端驾驶、世界模型与强化学习，探索能在新环境中泛化的自主系统。">. I work on end-to-end driving, world models, and reinforcement learning — towards autonomous systems that generalize to new environments.</span></p>
         <div class="hero-buttons">
@@ -47,38 +50,36 @@
       <div class="hero-visual">
         <div class="visual-topline"><span data-en="FROM OBSERVATION TO ACTION" data-zh="从感知，到行动">FROM OBSERVATION TO ACTION</span><span class="visual-live" data-en="A research sketch" data-zh="研究方向示意">A research sketch</span></div>
         <svg class="scene-svg" data-mode="planning" viewBox="0 0 500 370" role="img" aria-labelledby="scene-title scene-desc">
-          <title id="scene-title">Perceive, predict, plan</title><desc id="scene-desc">A conceptual driving scene showing a vehicle, alternative trajectories, and predicted scene representations. This illustration does not display experimental data.</desc>
-          <defs><pattern id="dot-grid" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".65" fill="#ccd6c4"/></pattern><linearGradient id="scene-fade" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e7eddf"/><stop offset="1" stop-color="#f8f9f5" stop-opacity="0"/></linearGradient><linearGradient id="route-fade" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#244a36"/><stop offset="1" stop-color="#79995c"/></linearGradient></defs>
+          <title id="scene-title">Autonomous driving research</title><desc id="scene-desc">A conceptual driving scene showing a vehicle, alternative trajectories, and predicted scene representations. This illustration does not display experimental data.</desc>
+          <defs><pattern id="dot-grid" width="18" height="18" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".65" fill="#bccbde"/></pattern><linearGradient id="scene-fade" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#dbe5f1"/><stop offset="1" stop-color="#f7f9fd" stop-opacity="0"/></linearGradient><linearGradient id="route-fade" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#1b3353"/><stop offset="1" stop-color="#4874ad"/></linearGradient></defs>
           <ellipse cx="265" cy="208" rx="205" ry="145" fill="url(#scene-fade)"/>
           <path d="M25 82 280 18l203 120-251 183L25 222Z" fill="url(#dot-grid)" opacity=".7"/>
-          <g fill="none" stroke="#d1dac9" stroke-width="1">
+          <g fill="none" stroke="#c2cfe1" stroke-width="1">
             <path d="m38 215 233-126 192 100M67 234 299 106M97 251 329 122M128 270 359 140M160 289 390 158M191 307 421 176"/>
             <path d="m65 199 181 105m-143-125 180 104M141 158l180 104M179 138l180 104M217 117l180 104M255 97l180 104"/>
           </g>
-          <g fill="#edf1e7" stroke="#ccd7c2" stroke-linejoin="round">
+          <g fill="#e4ebf4" stroke="#bacadf" stroke-linejoin="round">
             <path d="m105 126 41-23 30 18v56l-41 24-30-18Z"/><path d="m105 126 30 18 41-23M135 144v57" fill="none"/>
             <path d="m327 76 34-19 27 16v72l-34 20-27-16Z"/><path d="m327 76 27 16 34-19M354 92v73" fill="none"/>
             <path d="m367 220 30-17 26 15v32l-30 18-26-15Z"/><path d="m367 220 26 15 30-17M393 235v33" fill="none"/>
           </g>
-          <g class="world-layer diagram-layer" fill="none" stroke="#88a571">
+          <g class="world-layer diagram-layer" fill="none" stroke="#5e85b8">
             <path d="M192 128v-46l58-32 62 35v47l-59 34Z" stroke-dasharray="4 4"/>
             <path d="m192 82 61 35 59-32M253 117v49" stroke-dasharray="4 4"/>
             <path d="m207 74 46 26 44-24M222 65l31 18 29-17" opacity=".6"/>
-            <circle cx="253" cy="117" r="6" fill="#bdd5a5" stroke="none"/>
+            <circle cx="253" cy="117" r="6" fill="#9ab8e0" stroke="none"/>
           </g>
-          <path d="m126 275 68-40c27-16 47-29 65-61 15-28 44-41 90-66" fill="none" stroke="#e1e9da" stroke-width="48" stroke-linecap="round"/>
-          <path d="m126 275 68-40c27-16 47-29 65-61 15-28 44-41 90-66" fill="none" stroke="#bfccb2" stroke-width="1" stroke-dasharray="7 6"/>
+          <path d="m126 275 68-40c27-16 47-29 65-61 15-28 44-41 90-66" fill="none" stroke="#d5e0ee" stroke-width="48" stroke-linecap="round"/>
+          <path d="m126 275 68-40c27-16 47-29 65-61 15-28 44-41 90-66" fill="none" stroke="#a8bcd6" stroke-width="1" stroke-dasharray="7 6"/>
           <g class="planning-layer diagram-layer" fill="none" stroke-linecap="round">
-            <path d="m157 257 50-24c33-15 53-12 87-24l37-22" stroke="#aabd97" stroke-width="1.4" stroke-dasharray="4 5"/>
-            <path d="m157 257 42-29c31-22 25-52 45-77l34-27" stroke="#aabd97" stroke-width="1.4" stroke-dasharray="4 5"/>
+            <path d="m157 257 50-24c33-15 53-12 87-24l37-22" stroke="#89a6cb" stroke-width="1.4" stroke-dasharray="4 5"/>
+            <path d="m157 257 42-29c31-22 25-52 45-77l34-27" stroke="#89a6cb" stroke-width="1.4" stroke-dasharray="4 5"/>
             <path d="m157 257 42-25c27-16 45-30 61-58 15-28 44-41 89-66" stroke="url(#route-fade)" stroke-width="3.5"/>
-            <circle cx="349" cy="108" r="13" stroke="#9eb98a" stroke-width="1"/><circle cx="349" cy="108" r="4" fill="#577846" stroke="none"/>
-            <circle cx="260" cy="174" r="3" fill="#577846" stroke="none"/>
+            <circle cx="349" cy="108" r="13" stroke="#7b9cc8" stroke-width="1"/><circle cx="349" cy="108" r="4" fill="#375a87" stroke="none"/>
+            <circle cx="260" cy="174" r="3" fill="#375a87" stroke="none"/>
           </g>
-          <g class="safety-layer diagram-layer"><ellipse cx="280" cy="155" rx="36" ry="21" fill="#d2b26c" opacity=".2" transform="rotate(-30 280 155)"/><ellipse cx="280" cy="155" rx="23" ry="13" fill="none" stroke="#ad8c48" stroke-dasharray="3 3" transform="rotate(-30 280 155)"/><path d="m280 142-9 17h18Z" fill="#f3ead2" stroke="#a28448"/><path d="M280 148v5m0 2v1" stroke="#a28448" stroke-linecap="round"/></g>
-          <g transform="translate(145 249) rotate(-29)"><ellipse cx="0" cy="13" rx="29" ry="12" fill="#304b2b" opacity=".1"/><rect x="-20" y="-10" width="40" height="22" rx="7" fill="#294c36"/><rect x="-13" y="-17" width="27" height="23" rx="6" fill="#43654b" stroke="#f0f5e9" stroke-width="1.2"/><path d="M-8-13H9l3 8H-11Z" fill="#b9d0a2"/><path d="M-19 3h4m29 0h4" stroke="#dcecc8" stroke-width="2"/></g>
-          <g font-size="8" fill="#687c5e" letter-spacing="1.1"><text x="63" y="312">01 / PERCEIVE</text><text x="218" y="311">02 / PREDICT</text><text x="372" y="311">03 / PLAN</text></g>
-          <path d="M63 325h371" stroke="#d5dfcd"/><path d="M63 325h113" stroke="#789668" stroke-width="2"/><circle cx="63" cy="325" r="3" fill="#789668"/><circle cx="247" cy="325" r="3" fill="#c1d2b3"/><circle cx="434" cy="325" r="3" fill="#c1d2b3"/>
+          <g class="safety-layer diagram-layer"><ellipse cx="280" cy="155" rx="36" ry="21" fill="#5e96e0" opacity=".2" transform="rotate(-30 280 155)"/><ellipse cx="280" cy="155" rx="23" ry="13" fill="none" stroke="#3471c1" stroke-dasharray="3 3" transform="rotate(-30 280 155)"/><path d="m280 142-9 17h18Z" fill="#cfe0f6" stroke="#356db5"/><path d="M280 148v5m0 2v1" stroke="#356db5" stroke-linecap="round"/></g>
+          <g transform="translate(145 249) rotate(-29)"><ellipse cx="0" cy="13" rx="29" ry="12" fill="#223854" opacity=".1"/><rect x="-20" y="-10" width="40" height="22" rx="7" fill="#203755"/><rect x="-13" y="-17" width="27" height="23" rx="6" fill="#365072" stroke="#e6eef8" stroke-width="1.2"/><path d="M-8-13H9l3 8H-11Z" fill="#97b4db"/><path d="M-19 3h4m29 0h4" stroke="#c2d7f2" stroke-width="2"/></g>
         </svg>
         <div class="diagram-tabs" role="group" aria-label="Explore research themes">
           <button type="button" data-theme="planning" aria-pressed="true" data-en="End-to-end planning" data-zh="端到端规划">End-to-end planning</button>
@@ -100,7 +101,7 @@
       <div class="section-header"><div><div class="section-kicker" data-en="01 / Selected work" data-zh="01 / 代表项目">01 / Selected work</div><h2 id="research-title" data-en="Questions I'm exploring." data-zh="我正在探索的问题">Questions I'm exploring.</h2></div><p class="section-intro" data-en="How can autonomous systems plan better, transfer further, and handle uncertainty?" data-zh="自主系统如何做出更好的规划、适应新的环境，并应对感知中的不确定性？">How can autonomous systems plan better, transfer further, and handle uncertainty?</p></div>
 
       <article class="project">
-        <div class="project-figure" aria-hidden="true"><span class="figure-label">GENERALIZATION / ACROSS ENVIRONMENTS</span><svg viewBox="0 0 260 190" fill="none"><g stroke="#c6d2bc"><path d="m28 99 55-32 53 31-55 32Zm101 34 50-29 53 30-50 29Z"/><path d="M55 83v32m27-47v62m27-47v31m46 4v30m25-43v57m27-42v28M41 91l55 31m-28-47 55 31m19 20 51 30m-24-45 51 30"/></g><path d="m39 109 29-20 24 15 24-16" stroke="#537844" stroke-width="2.5"/><path d="m143 145 28-20 25 15 24-16" stroke="#537844" stroke-width="2.5"/><path d="M112 57c27-19 56-8 65 27" stroke="#8da67b" stroke-dasharray="4 5"/><path d="m169 78 9 9 3-13" stroke="#8da67b"/><circle cx="39" cy="109" r="4" fill="#537844"/><circle cx="143" cy="145" r="4" fill="#537844"/><g fill="#718367" stroke="none" font-family="sans-serif" font-size="8" letter-spacing="1"><text x="53" y="153">ENVIRONMENT A</text><text x="153" y="181">ENVIRONMENT B</text></g></svg></div>
+        <div class="project-figure" aria-hidden="true"><span class="figure-label">GENERALIZATION / ACROSS ENVIRONMENTS</span><svg viewBox="0 0 260 190" fill="none"><g stroke="#b3c4db"><path d="m28 99 55-32 53 31-55 32Zm101 34 50-29 53 30-50 29Z"/><path d="M55 83v32m27-47v62m27-47v31m46 4v30m25-43v57m27-42v28M41 91l55 31m-28-47 55 31m19 20 51 30m-24-45 51 30"/></g><path d="m39 109 29-20 24 15 24-16" stroke="#355987" stroke-width="2.5"/><path d="m143 145 28-20 25 15 24-16" stroke="#355987" stroke-width="2.5"/><path d="M112 57c27-19 56-8 65 27" stroke="#698bb8" stroke-dasharray="4 5"/><path d="m169 78 9 9 3-13" stroke="#698bb8"/><circle cx="39" cy="109" r="4" fill="#355987"/><circle cx="143" cy="145" r="4" fill="#355987"/><g fill="#547196" stroke="none" font-family="sans-serif" font-size="8" letter-spacing="1"><text x="53" y="153">ENVIRONMENT A</text><text x="153" y="181">ENVIRONMENT B</text></g></svg></div>
         <div class="project-content">
           <div class="project-meta"><span class="project-number">01</span><span>VITA Lab · EPFL · Swiss AI Initiative</span><span class="tag" data-en="Ongoing" data-zh="进行中">Ongoing</span></div>
           <h3 data-en="Driving beyond familiar geographies" data-zh="走向新地域的端到端驾驶">Driving beyond familiar geographies</h3>
@@ -111,7 +112,7 @@
       </article>
 
       <article class="project">
-        <div class="project-figure" aria-hidden="true"><span class="figure-label">TEMPORAL REASONING / DRIVING PLANNERS</span><svg viewBox="0 0 260 190" fill="none"><g stroke="#bfccc2"><rect x="24" y="70" width="43" height="54" rx="3"/><rect x="15" y="62" width="43" height="54" rx="3" fill="#e9efea"/><rect x="7" y="54" width="43" height="54" rx="3" fill="#e9efea"/></g><path d="M21 96v-20m-8 13 30-17" stroke="#8ba38c"/><rect x="93" y="66" width="74" height="47" rx="4" fill="#d5e1d1" stroke="#9fb596"/><path d="M63 89h23m-6-5 6 5-6 5M173 89h22m-6-5 6 5-6 5" stroke="#6f8c69"/><rect x="201" y="55" width="49" height="64" rx="3" stroke="#a5b69d" stroke-dasharray="3 3"/><path d="m211 108 10-13-3-15 19-14" stroke="#638157" stroke-width="2"/><g fill="#59754e"><circle cx="111" cy="90" r="3"/><circle cx="130" cy="90" r="3"/><circle cx="149" cy="90" r="3"/></g><g fill="#6b7d6a" font-family="sans-serif" font-size="8" letter-spacing=".7"><text x="16" y="147">PAST</text><text x="100" y="147">FUSION</text><text x="208" y="147">FUTURE</text></g></svg></div>
+        <div class="project-figure" aria-hidden="true"><span class="figure-label">TEMPORAL REASONING / DRIVING PLANNERS</span><svg viewBox="0 0 260 190" fill="none"><g stroke="#b6c3d5"><rect x="24" y="70" width="43" height="54" rx="3"/><rect x="15" y="62" width="43" height="54" rx="3" fill="#e9efea"/><rect x="7" y="54" width="43" height="54" rx="3" fill="#e9efea"/></g><path d="M21 96v-20m-8 13 30-17" stroke="#7a93b4"/><rect x="93" y="66" width="74" height="47" rx="4" fill="#cbd7e7" stroke="#88a2c3"/><path d="M63 89h23m-6-5 6 5-6 5M173 89h22m-6-5 6 5-6 5" stroke="#5576a0"/><rect x="201" y="55" width="49" height="64" rx="3" stroke="#8fa6c4" stroke-dasharray="3 3"/><path d="m211 108 10-13-3-15 19-14" stroke="#466792" stroke-width="2"/><g fill="#3e5d85"><circle cx="111" cy="90" r="3"/><circle cx="130" cy="90" r="3"/><circle cx="149" cy="90" r="3"/></g><g fill="#58708f" font-family="sans-serif" font-size="8" letter-spacing=".7"><text x="16" y="147">PAST</text><text x="100" y="147">FUSION</text><text x="208" y="147">FUTURE</text></g></svg></div>
         <div class="project-content">
           <div class="project-meta"><span class="project-number">02</span><span>VITA Lab · EPFL</span><span class="tag" data-en="Semester project" data-zh="学期研究项目">Semester project</span></div>
           <h3 data-en="Giving driving planners a sense of time" data-zh="让驾驶规划器理解时间">Giving driving planners a sense of time</h3>
@@ -122,7 +123,7 @@
       </article>
 
       <article class="project">
-        <div class="project-figure" aria-hidden="true"><span class="figure-label">PERCEPTION UNCERTAINTY / SAFETY</span><svg viewBox="0 0 260 190" fill="none"><path d="M26 62h210M26 128h210" stroke="#c9c8b9"/><path d="M26 95h210" stroke="#c4c3b3" stroke-dasharray="8 8"/><path d="m82 95 120-53v106Z" fill="#d5cfb3" opacity=".28"/><path d="m82 95 120-53m-120 53 120 53" stroke="#bdb697" stroke-dasharray="3 4"/><rect x="55" y="83" width="43" height="24" rx="6" fill="#5e7555"/><rect x="63" y="87" width="23" height="16" rx="3" fill="#d6dfc9"/><ellipse cx="179" cy="76" rx="32" ry="24" stroke="#b69c62" stroke-dasharray="4 4"/><rect x="162" y="66" width="35" height="19" rx="4" fill="#c9ba96" stroke="#aa9669"/><path d="M126 104c20 18 29 19 54 19" stroke="#789264" stroke-width="2"/><path d="m173 119 8 4-7 5" stroke="#789264" stroke-width="2"/><g fill="#80785e" font-family="sans-serif" font-size="8" letter-spacing=".8"><text x="39" y="156">SENSOR NOISE</text><text x="146" y="156">CRITICAL SCENARIOS</text></g></svg></div>
+        <div class="project-figure" aria-hidden="true"><span class="figure-label">PERCEPTION UNCERTAINTY / SAFETY</span><svg viewBox="0 0 260 190" fill="none"><path d="M26 62h210M26 128h210" stroke="#afbfd3"/><path d="M26 95h210" stroke="#a8b9cf" stroke-dasharray="8 8"/><path d="m82 95 120-53v106Z" fill="#aac0de" opacity=".28"/><path d="m82 95 120-53m-120 53 120 53" stroke="#89a6cb" stroke-dasharray="3 4"/><rect x="55" y="83" width="43" height="24" rx="6" fill="#456185"/><rect x="63" y="87" width="23" height="16" rx="3" fill="#c2d2e6"/><ellipse cx="179" cy="76" rx="32" ry="24" stroke="#5084c8" stroke-dasharray="4 4"/><rect x="162" y="66" width="35" height="19" rx="4" fill="#89aad6" stroke="#5683bd"/><path d="M126 104c20 18 29 19 54 19" stroke="#5075a6" stroke-width="2"/><path d="m173 119 8 4-7 5" stroke="#5075a6" stroke-width="2"/><g fill="#4c6a92" font-family="sans-serif" font-size="8" letter-spacing=".8"><text x="39" y="156">SENSOR NOISE</text><text x="146" y="156">CRITICAL SCENARIOS</text></g></svg></div>
         <div class="project-content">
           <div class="project-meta"><span class="project-number">03</span><span data-en="Southeast University · B.Sc. thesis" data-zh="东南大学 · 本科毕业研究">Southeast University · B.Sc. thesis</span><span class="tag">ITSC 2026</span></div>
           <h3 data-en="Testing safety when perception is imperfect" data-zh="在不完美感知下，检验驾驶安全">Testing safety when perception is imperfect</h3>
@@ -154,7 +155,6 @@
             <div class="skill-group"><dt data-en="Autonomous systems" data-zh="自主系统">Autonomous systems</dt><dd>End-to-end planning · World models · VLA · Computer vision · Closed-loop evaluation</dd></div>
             <div class="skill-group"><dt data-en="Tools of the trade" data-zh="技术工具">Tools of the trade</dt><dd>Python · PyTorch · TensorFlow · scikit-learn · pandas · NumPy · Linux · Git · Docker</dd></div>
           </dl>
-          <div class="awards"><h3 data-en="Academic recognition" data-zh="荣誉与奖励">Academic recognition</h3><p data-en="Model Student of Academic Records · Top 5% of major, Southeast University, 2023–2024" data-zh="成绩优秀学生 · 专业前 5%，东南大学，2023–2024">Model Student of Academic Records · Top 5% of major, Southeast University, 2023–2024</p><p data-en="Outstanding Student Scholarship · 2021–2022, 2022–2023, 2023–2024" data-zh="优秀学生奖学金 · 2021–2022、2022–2023、2023–2024">Outstanding Student Scholarship · 2021–2022, 2022–2023, 2023–2024</p></div>
         </div>
         <div class="about-column">
           <h3 data-en="Experience" data-zh="研究与工作经历">Experience</h3>

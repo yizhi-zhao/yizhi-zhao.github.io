@@ -38,7 +38,8 @@
     languageButton.setAttribute('aria-label', language === 'en' ? 'Switch to Chinese' : '切换为英文');
     nav.setAttribute('aria-label', language === 'en' ? 'Main navigation' : '主导航');
     document.querySelector('.diagram-tabs').setAttribute('aria-label', language === 'en' ? 'Explore research themes' : '探索研究主题');
-    document.querySelector('#scene-title').textContent = language === 'en' ? 'Perceive, predict, plan' : '感知、预测与规划';
+    document.querySelector('#scene-title').textContent = language === 'en' ? 'Autonomous driving research' : '自动驾驶研究';
+    document.querySelector('.profile-photo').alt = language === 'en' ? 'Portrait of Yizhi Zhao' : 'Yizhi Zhao 的个人照片';
     document.querySelector('#scene-desc').textContent = language === 'en'
       ? 'A conceptual driving scene showing a vehicle, alternative trajectories, and predicted scene representations. This illustration does not display experimental data.'
       : '自动驾驶概念示意图，展示车辆、候选轨迹与场景预测，不表示实验数据。';
