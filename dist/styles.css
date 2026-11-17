@@ -223,6 +223,16 @@ body[data-page="background"] #about { margin-top: 25px; }
 .footer { align-items: flex-start; }
 .footer-links { display: flex; gap: 23px; }
 .photo-credit { font-size: 14px; margin: 9px 0 0; max-width: 460px; color: var(--muted); line-height: 1.8; }
+.profile-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+.profile-links svg {
+  width: 1.1em;
+  height: 1.1em;
+  flex: none;
+}
 @keyframes content-enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes campus-scan { from { left: -20%; } to { left: 120%; } }
 @keyframes page-out { to { opacity: 0; transform: translateY(-7px); } }
