@@ -23,9 +23,9 @@ const paperArt = `<svg viewBox="0 0 160 100" fill="none" aria-hidden="true"><rec
 const nodesArt = `<svg viewBox="0 0 160 100" fill="none" aria-hidden="true"><path d="m24 76 49-46 56 35" stroke="currentColor"/><path d="M24 76h105M73 30V8" stroke="currentColor" stroke-dasharray="3 4" opacity=".4"/><circle cx="24" cy="76" r="8" fill="#edf4ff" stroke="currentColor"/><circle cx="73" cy="30" r="10" fill="#edf4ff" stroke="currentColor"/><circle cx="129" cy="65" r="8" fill="#edf4ff" stroke="currentColor"/></svg>`;
 function explore() {
   return `<nav class="explore-nav" aria-label="Explore the website">
-    <a class="explore-link" href="research.html" id="research" data-page-link><span class="explore-art">${pathsArt}</span>${bilingual('h2', 'Research', '研究项目')}<p>Autonomous driving · World models · RL</p><span class="explore-arrow" aria-hidden="true">↗</span></a>
-    <a class="explore-link" href="publications.html" id="publications" data-page-link><span class="explore-art">${paperArt}</span>${bilingual('h2', 'Publications', '论文发表')}<p>IEEE ITSC 2026</p><span class="explore-arrow" aria-hidden="true">↗</span></a>
-    <a class="explore-link" href="background.html" id="about" data-page-link><span class="explore-art">${nodesArt}</span>${bilingual('h2', 'Background', '个人经历')}<p>EPFL · Bosch · Southeast University</p><span class="explore-arrow" aria-hidden="true">↗</span></a>
+    <a class="explore-link" href="research.html" id="research" data-page-link><span class="explore-art">${pathsArt}</span>${bilingual('h2', 'Research', '研究项目')}<span class="explore-arrow" aria-hidden="true">↗</span></a>
+    <a class="explore-link" href="publications.html" id="publications" data-page-link><span class="explore-art">${paperArt}</span>${bilingual('h2', 'Publications', '论文发表')}<span class="explore-arrow" aria-hidden="true">↗</span></a>
+    <a class="explore-link" href="background.html" id="about" data-page-link><span class="explore-art">${nodesArt}</span>${bilingual('h2', 'Background', '个人经历')}<span class="explore-arrow" aria-hidden="true">↗</span></a>
   </nav>`;
 }
 

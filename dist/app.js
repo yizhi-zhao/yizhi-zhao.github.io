@@ -20,7 +20,6 @@
     languageButton.setAttribute('aria-label', language === 'en' ? 'Switch to Chinese' : '切换为英文');
     nav.setAttribute('aria-label', language === 'en' ? 'Main navigation' : '主导航');
     document.querySelector('.profile-photo')?.setAttribute('alt', language === 'en' ? 'Portrait of Yizhi Zhao' : 'Yizhi Zhao 的个人照片');
-    document.querySelector('.portrait-link')?.setAttribute('aria-label', language === 'en' ? 'View full-size portrait of Yizhi Zhao' : '查看 Yizhi Zhao 的原尺寸照片');
     document.querySelector('.profile-links')?.setAttribute('aria-label', language === 'en' ? 'Contact and profiles' : '联系方式与个人资料');
     if (copyStatus) copyStatus.textContent = '';
     if (citationToggle && citationPanel) citationToggle.textContent = citationPanel.hidden

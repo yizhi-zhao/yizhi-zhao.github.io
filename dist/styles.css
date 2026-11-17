@@ -34,8 +34,8 @@ button:focus-visible, a:focus-visible, summary:focus-visible { outline: 2px soli
 .hero-description { margin: 0 0 17px; line-height: 1.9; }
 .profile-links { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 23px; font-size: 14px; }
 .portrait { margin: 5px 0 0; }
-.portrait-link { display: block; }
-.profile-photo { width: 100%; height: auto; display: block; border-radius: 3px; }
+.portrait-frame { display: block; }
+.profile-photo { width: 100%; height: auto; display: block; border-radius: 3px; pointer-events: none; user-select: none; }
 .portrait figcaption { text-align: center; color: var(--muted); font-size: 12px; margin-top: 11px; }
 .section { margin-top: 47px; scroll-margin-top: 25px; }
 .section h2 { font-weight: 500; font-size: 24px; letter-spacing: -.3px; line-height: 1.4; color: #1d2b3e; margin: 0 0 25px; padding-bottom: 11px; border-bottom: 1px solid var(--line); }
@@ -163,7 +163,7 @@ body { background: linear-gradient(135deg, #f5f9ff, #fff 58%, #f2f7ff); min-heig
 .hero h1 { font-size: 46px; }
 .portrait { position: relative; z-index: 1; margin: -137px 0 0; background: white; padding: 7px 7px 0; border: 1px solid #e0e9f5; border-radius: 11px; box-shadow: 0 16px 40px #173a661c; transition: transform .35s, box-shadow .35s; }
 .portrait:hover { transform: translateY(-4px); box-shadow: 0 22px 48px #173a6626; }
-.portrait-link { overflow: hidden; border-radius: 6px; }
+.portrait-frame { overflow: hidden; border-radius: 6px; }
 .profile-photo { border-radius: 6px; }
 .portrait figcaption { margin: 10px 0 12px; font-size: 11px; }
 .profile-links a { position: relative; padding-bottom: 3px; }
@@ -177,7 +177,6 @@ body { background: linear-gradient(135deg, #f5f9ff, #fff 58%, #f2f7ff); min-heig
 .explore-art svg { width: 100%; height: 100%; display: block; }
 .explore-link:hover .explore-art { transform: translateX(5px); }
 .explore-link h2 { font-size: 17px; font-weight: 550; margin: 0 0 7px; }
-.explore-link p { font-size: 11px; color: var(--muted); margin: 0; line-height: 1.8; }
 .explore-arrow { position: absolute; right: 22px; top: 24px; font-size: 23px; color: #5e8fc9; transition: transform .25s; }
 .explore-link:hover .explore-arrow { transform: translate(3px, -3px); }
 .page-heading { position: relative; display: flex; align-items: center; justify-content: space-between; min-height: 235px; margin: 15px 0 18px; border-bottom: 1px solid var(--line); overflow: hidden; }
@@ -193,6 +192,9 @@ body { background: linear-gradient(135deg, #f5f9ff, #fff 58%, #f2f7ff); min-heig
 .project-heading h3::before { content: ''; position: absolute; left: 0; top: 9px; width: 3px; height: 13px; background: #8db6e6; border-radius: 2px; }
 .project-affiliation, .project > p, .project > details { margin-left: 13px; }
 .detail-body { background: #eef4fd80; border-color: #b8d1ee; border-radius: 0 5px 5px 0; padding: 8px 17px; }
+.project .cv-supervisor { color: var(--muted); font-size: 12px; margin-top: 5px; }
+.project .cv-overview { line-height: 1.9; margin-top: 14px; }
+.cv-overview strong, .research-outcome strong { font-weight: 550; }
 .publication { padding: 26px 29px; background: #fff; border: 1px solid #dae5f3; border-left: 3px solid #729fd8; border-radius: 0 8px 8px 0; box-shadow: 0 8px 24px #19457806; }
 body[data-page="background"] #about { margin-top: 25px; }
 .entry { position: relative; }
@@ -233,7 +235,6 @@ body[data-page="background"] #about { margin-top: 25px; }
   .explore-nav { gap: 12px; }
   .explore-art { width: 110px; height: 72px; }
   .explore-link { padding: 15px; }
-  .explore-link p { font-size: 10px; }
   .explore-link h2 { font-size: 15px; }
   .explore-arrow { right: 13px; top: 13px; font-size: 20px; }
   .page-heading { min-height: 200px; }
@@ -257,7 +258,6 @@ body[data-page="background"] #about { margin-top: 25px; }
   .explore-link { padding: 20px 23px 20px 112px; min-height: 105px; display: flex; flex-direction: column; justify-content: center; }
   .explore-art { position: absolute; left: 15px; top: 20px; width: 78px; height: 62px; margin: 0; }
   .explore-link h2 { font-size: 17px; }
-  .explore-link p { font-size: 10px; max-width: 180px; }
   .explore-arrow { top: 17px; right: 16px; font-size: 19px; }
   .page-heading { min-height: 190px; }
   .page-heading h1 { font-size: 35px; margin-top: 14px; }
