@@ -1,0 +1,11 @@
+{
+  "name": "yizhi-zhao-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Yizhi Zhao's research and engineering portfolio",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "start": "node scripts/serve.mjs"
+  }
+}
