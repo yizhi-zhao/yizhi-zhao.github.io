@@ -22,8 +22,16 @@
         </div>
       </div>
       <figure class="portrait">
-        <div class="portrait-frame"><img class="profile-photo" src="assets/yizhi-zhao.jpg" width="1079" height="1619" alt="Yizhi Zhao outdoors" fetchpriority="high" decoding="async" draggable="false"></div>
-        <figcaption data-en="Off campus" data-zh="校园之外">Off campus</figcaption>
+        <button class="portrait-toggle" type="button" aria-pressed="false" aria-label="Flip between off-campus and on-campus photos" aria-describedby="portrait-mode portrait-hint">
+          <span class="portrait-stage">
+            <span class="portrait-flipper">
+              <span class="portrait-face portrait-face--outdoors" aria-hidden="false"><img class="profile-photo" src="assets/yizhi-zhao.jpg" width="1079" height="1619" alt="Yizhi Zhao outdoors" data-alt-en="Yizhi Zhao outdoors" data-alt-zh="Yizhi Zhao 的户外照片" fetchpriority="high" decoding="async" draggable="false"></span>
+              <span class="portrait-face portrait-face--formal" aria-hidden="true"><img class="profile-photo" src="assets/yizhi-formal.jpg" width="1717" height="1948" alt="Formal portrait of Yizhi Zhao" data-alt-en="Formal portrait of Yizhi Zhao" data-alt-zh="Yizhi Zhao 的正式照片" decoding="async" draggable="false"></span>
+            </span>
+            <span class="portrait-flip-cue" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 8a8.5 8.5 0 0 0-14.4-2L3 9m0 0V3m0 6h6M4 16a8.5 8.5 0 0 0 14.4 2L21 15m0 0v6m0-6h-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </span>
+        </button>
+        <figcaption><span id="portrait-mode" aria-live="polite">Off campus</span><span id="portrait-hint" data-en="Click to flip" data-zh="点击照片翻面">Click to flip</span></figcaption>
       </figure>
     </section>
 <nav class="explore-nav" aria-label="Explore the website">
@@ -38,7 +46,7 @@
 <section class="personal-section" id="personal" aria-labelledby="personal-title">
   <div class="personal-copy">
     <h2 id="personal-title" data-en="Outside research" data-zh="研究之外">Outside research</h2>
-    <p data-en="I also enjoy hiking, photography, and music." data-zh="研究之外，我也喜欢徒步、摄影和音乐。">I also enjoy hiking, photography, and music.</p>
+    <p data-en="Outside research, I enjoy sports and hiking. I like capturing little moments of everyday life with my camera, listening to music, and watching anime and TV series — preferably with a good cup of coffee." data-zh="研究之外，我喜欢运动和徒步。平时会用相机记录生活里的片刻，也爱听音乐、追动画和剧集，再配上一杯好咖啡。">Outside research, I enjoy sports and hiking. I like capturing little moments of everyday life with my camera, listening to music, and watching anime and TV series — preferably with a good cup of coffee.</p>
   </div>
   <div class="personal-doodles" aria-hidden="true">
     <svg viewBox="0 0 40 40" fill="none"><path d="m3 31 13-22 9 15 4-7 8 14H3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="m11 18 5 3 4-5M25 24l4 3 3-4" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>

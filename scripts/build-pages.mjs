@@ -73,7 +73,7 @@ for (const route of routes) {
     if (route.key === 'research') body = decorateResearch(body);
     if (route.key === 'publications') body = decoratePublications(body);
     if (route.key === 'background') body = decorateBackground(body);
-    content = `${pageHeader(route)}${body}<nav class="page-bottom-nav" aria-label="Other pages">${routes.filter(item => item.key !== route.key).map(item => bilingual('a', `${item.en} →`, `${item.zh} →`, ` href="${item.file}" data-page-link`)).join('')}</nav>`;
+    content = `${pageHeader(route)}${body}<nav class="page-bottom-nav" aria-label="Other pages">${routes.filter(item => item.key !== route.key).map(item => `<a href="${item.file}" data-page-link>${bilingual('span', item.en, item.zh)}<span class="nav-arrow" aria-hidden="true">→</span></a>`).join('')}</nav>`;
   }
   const nav = routes.map(item => `<a href="${item.file}" data-page-link${route.key === item.key ? ' aria-current="page"' : ''} data-en="${item.en}" data-zh="${item.zh}">${item.en}</a>`).join('');
   const footerCredit = route.key === 'home' ? `<p class="photo-credit" data-en="Campus photo taken by Yizhi on his first day at EPFL." data-zh="校园照片由 Yizhi 在来到 EPFL 校园的第一天拍摄。">Campus photo taken by Yizhi on his first day at EPFL.</p>` : '';

@@ -7,7 +7,23 @@
   const citationToggle = document.querySelector('#citation-toggle');
   const citationPanel = document.querySelector('#citation-panel');
   const copyStatus = document.querySelector('#copy-status');
+  const portraitButton = document.querySelector('.portrait-toggle');
+  const portrait = document.querySelector('.portrait');
+  let showFormalPortrait = false;
   let language = 'en';
+
+  function updatePortrait() {
+    if (!portraitButton) return;
+    portrait.classList.toggle('is-flipped', showFormalPortrait);
+    portraitButton.setAttribute('aria-pressed', String(showFormalPortrait));
+    portraitButton.setAttribute('aria-label', language === 'en'
+      ? 'Flip between off-campus and on-campus photos' : '切换校园内外照片');
+    portrait.querySelector('.portrait-face--outdoors').setAttribute('aria-hidden', String(showFormalPortrait));
+    portrait.querySelector('.portrait-face--formal').setAttribute('aria-hidden', String(!showFormalPortrait));
+    portrait.querySelector('#portrait-mode').textContent = showFormalPortrait
+      ? (language === 'en' ? 'On campus' : '校园之中')
+      : (language === 'en' ? 'Off campus' : '校园之外');
+  }
 
   function setLanguage(nextLanguage) {
     language = nextLanguage === 'zh' ? 'zh' : 'en';
@@ -19,10 +35,10 @@
     languageButton.lang = language === 'en' ? 'zh-CN' : 'en';
     languageButton.setAttribute('aria-label', language === 'en' ? 'Switch to Chinese' : '切换为英文');
     nav.setAttribute('aria-label', language === 'en' ? 'Main navigation' : '主导航');
-    document.querySelector('.profile-photo')?.setAttribute('alt', language === 'en' ? 'Yizhi Zhao outdoors' : 'Yizhi Zhao 的户外照片');
     document.querySelector('.campus-cover')?.setAttribute('aria-label', language === 'en' ? 'EPFL campus photographed by Yizhi on his first day' : 'Yizhi 来到 EPFL 校园第一天拍摄的校园照片');
     document.querySelectorAll('img[data-alt-en][data-alt-zh]').forEach(image => { image.alt = image.dataset[language === 'en' ? 'altEn' : 'altZh']; });
     document.querySelector('.profile-links')?.setAttribute('aria-label', language === 'en' ? 'Contact and profiles' : '联系方式与个人资料');
+    updatePortrait();
     if (copyStatus) copyStatus.textContent = '';
     if (citationToggle && citationPanel) citationToggle.textContent = citationPanel.hidden
       ? (language === 'en' ? 'Citation' : '引用')
@@ -33,6 +49,10 @@
   }
 
   languageButton.addEventListener('click', () => setLanguage(language === 'en' ? 'zh' : 'en'));
+  portraitButton?.addEventListener('click', () => {
+    showFormalPortrait = !showFormalPortrait;
+    updatePortrait();
+  });
   menuButton.addEventListener('click', () => {
     const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
     menuButton.setAttribute('aria-expanded', String(!isOpen));

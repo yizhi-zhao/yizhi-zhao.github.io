@@ -16,4 +16,12 @@
 - Supplied file: `Yizhi_pic.jpg`
 - Original dimensions: 1079 × 1619 pixels
 - Supplied by the website owner; shown with the caption "Off campus" without asserting a location.
-- The supplied JPEG is copied unchanged and has no click-to-open or enlargement interaction.
+- The supplied JPEG is copied unchanged. It is the default front of the flip card; clicking switches to the formal photograph without opening or enlarging the image.
+
+## Formal personal photograph
+
+- Website file: `yizhi-formal.jpg`
+- Supplied file: `Yizhi-2_blue_bg1.jpg`
+- Original dimensions: 1717 × 1948 pixels
+- Supplied by the website owner; retained as the reverse of the "Off campus / On campus" photo card.
+- The original JPEG is copied unchanged. CSS crops its display area to match the outdoor photograph's card dimensions.
