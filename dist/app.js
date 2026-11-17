@@ -4,28 +4,10 @@
   const languageButton = document.querySelector('.language-toggle');
   const nav = document.querySelector('#main-nav');
   const menuButton = document.querySelector('.menu-toggle');
-  const scene = document.querySelector('.scene-svg');
-  const themeDescription = document.querySelector('.diagram-description');
   const citationToggle = document.querySelector('#citation-toggle');
   const citationPanel = document.querySelector('#citation-panel');
   const copyStatus = document.querySelector('#copy-status');
   let language = 'en';
-  let theme = 'planning';
-
-  const descriptions = {
-    planning: {
-      en: 'Learning to turn observations into driving decisions.',
-      zh: '将环境观测转化为驾驶决策。'
-    },
-    world: {
-      en: 'Learning representations that anticipate how a scene may evolve.',
-      zh: '学习环境表征，预测场景将如何演变。'
-    },
-    safety: {
-      en: 'Understanding risk when observations are uncertain.',
-      zh: '理解观测存在不确定性时的驾驶风险。'
-    }
-  };
 
   function setLanguage(nextLanguage) {
     language = nextLanguage === 'zh' ? 'zh' : 'en';
@@ -37,20 +19,16 @@
     languageButton.lang = language === 'en' ? 'zh-CN' : 'en';
     languageButton.setAttribute('aria-label', language === 'en' ? 'Switch to Chinese' : '切换为英文');
     nav.setAttribute('aria-label', language === 'en' ? 'Main navigation' : '主导航');
-    document.querySelector('.diagram-tabs').setAttribute('aria-label', language === 'en' ? 'Explore research themes' : '探索研究主题');
-    document.querySelector('#scene-title').textContent = language === 'en' ? 'Autonomous driving research' : '自动驾驶研究';
     document.querySelector('.profile-photo').alt = language === 'en' ? 'Portrait of Yizhi Zhao' : 'Yizhi Zhao 的个人照片';
-    document.querySelector('#scene-desc').textContent = language === 'en'
-      ? 'A conceptual driving scene showing a vehicle, alternative trajectories, and predicted scene representations. This illustration does not display experimental data.'
-      : '自动驾驶概念示意图，展示车辆、候选轨迹与场景预测，不表示实验数据。';
-    themeDescription.textContent = descriptions[theme][language];
+    document.querySelector('.portrait-link').setAttribute('aria-label', language === 'en' ? 'View full-size portrait of Yizhi Zhao' : '查看 Yizhi Zhao 的原尺寸照片');
+    document.querySelector('.profile-links').setAttribute('aria-label', language === 'en' ? 'Contact and profiles' : '联系方式与个人资料');
     copyStatus.textContent = '';
     citationToggle.textContent = citationPanel.hidden
-      ? (language === 'en' ? 'View citation ↗' : '查看引用 ↗')
-      : (language === 'en' ? 'Hide citation ↑' : '收起引用 ↑');
+      ? (language === 'en' ? 'Citation' : '引用')
+      : (language === 'en' ? 'Hide citation' : '收起引用');
     document.title = language === 'en'
-      ? 'Yizhi Zhao — Autonomous Driving & Physical AI'
-      : 'Yizhi Zhao — 自动驾驶与物理智能';
+      ? 'Yizhi Zhao | EPFL'
+      : 'Yizhi Zhao | 个人主页';
     try { localStorage.setItem('yizhi-portfolio-language', language); } catch { /* Browsing with storage disabled is supported. */ }
   }
 
@@ -80,21 +58,12 @@
     if (event.matches) closeMenu();
   });
 
-  document.querySelectorAll('[data-theme]').forEach(button => {
-    button.addEventListener('click', () => {
-      theme = button.dataset.theme;
-      scene.dataset.mode = theme;
-      document.querySelectorAll('[data-theme]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-      themeDescription.textContent = descriptions[theme][language];
-    });
-  });
-
   citationToggle.addEventListener('click', () => {
     citationPanel.hidden = !citationPanel.hidden;
     citationToggle.setAttribute('aria-expanded', String(!citationPanel.hidden));
     citationToggle.textContent = citationPanel.hidden
-      ? (language === 'en' ? 'View citation ↗' : '查看引用 ↗')
-      : (language === 'en' ? 'Hide citation ↑' : '收起引用 ↑');
+      ? (language === 'en' ? 'Citation' : '引用')
+      : (language === 'en' ? 'Hide citation' : '收起引用');
   });
 
   document.querySelector('#copy-citation').addEventListener('click', async () => {
