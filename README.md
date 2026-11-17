@@ -2,7 +2,7 @@
 
 适用于求职、实习和 PhD 申请的个人网站，使用蓝色主题、EPFL 校园背景、轻量页面切换动画和独立子页面。英文为默认语言，支持中文切换，手机和桌面均可浏览。页面不展示奖项与荣誉。
 
-首页将个人介绍与大幅半身照并排放置，手机上改为上下排列。照片直接使用提供的 1717 × 1948 像素原文件，不重新压缩；仅保留悬停动画，没有照片链接、点击放大或跳转功能。研究、论文和经历分别位于 `research.html`、`publications.html`、`background.html`；它们是实际 HTML 文件，可以直接访问、刷新和分享。首页三个入口只保留标题、图形和箭头，不添加会变化的内容摘要。
+首页将个人介绍与户外个人照并排放置，手机上改为上下排列。个人照使用用户提供的 `Yizhi_pic.jpg`（1079 × 1619 像素），保留山景与人物完整构图，不重新压缩；仅保留悬停动画，没有照片链接、点击放大或跳转功能。研究、论文和经历分别位于 `research.html`、`publications.html`、`background.html`；它们是实际 HTML 文件，可以直接访问、刷新和分享。首页三个入口只保留标题、图形和箭头，不添加会变化的内容摘要。
 
 ## 替换 EPFL 背景图
 
@@ -10,7 +10,11 @@
 2. 图片位置和遮罩在 **`dist/styles.css`** 中设置：`--campus-image` 指定图片路径，`--campus-position` 控制裁切位置；`.campus-cover` 的 `background-image` 第一层为蓝色遮罩。
 3. 提交并推送到 GitHub，网站会自动更新。单独替换图片不需要修改正文，也不需要重新生成页面。
 
-当前照片为 Fridolin freudenfett 拍摄的 EPFL Rolex Learning Center，来自 [Wikimedia Commons](https://commons.wikimedia.org/wiki/File:EPFL_Rolex_Learning_Center.jpg)，使用 CC BY-SA 4.0。来源和许可记录在 `dist/assets/PHOTO_CREDITS.md`，首页页脚也有署名。换成自己的图片后，可在 `scripts/build-pages.mjs` 的 `footerCredit` 中同步更新来源并运行 `npm run build`。
+当前背景使用用户提供的 `campus photo.jpg`（1620 × 1080 像素），页脚注明由 Yizhi 在来到 EPFL 校园的第一天拍摄。照片信息记录在 `dist/assets/PHOTO_CREDITS.md`；故事文案位于 `scripts/build-pages.mjs` 的 `footerCredit`，修改后运行 `npm run build`。
+
+## 修改个人爱好
+
+首页底部“研究之外”的内容在 **`content/personal.html`**。目前写的是用户选择的“徒步、摄影、音乐”，以小区块呈现，不加入主导航。修改这个文件中的 `data-en`、`data-zh` 和默认英文文本，然后运行 `npm run build` 并推送即可更新。
 
 ## 本地查看
 
@@ -31,6 +35,7 @@ npm run dev
 - `content/overview.html`：首页个人介绍与照片。
 - `content/research.html`、`content/publications.html`、`content/background.html`：研究、论文与经历。
 - `content/contact.html`：首页联系信息。
+- `content/personal.html`：首页底部的个人兴趣。
 - `scripts/build-pages.mjs`：公共页面模板、导航、首页分页面入口与图片署名。修改上述源文件后运行 `npm run build`，生成四个 `dist/*.html` 文件。双语文本写在 `data-en` / `data-zh` 属性中；修改时请同步更新属性和默认英文文本。
 - `dist/styles.css`：颜色、字体、布局与移动端样式。
 - `dist/app.js`：语言切换、导航和引用复制。

@@ -1,12 +1,19 @@
-# EPFL campus photograph
+# Personal photographs
 
-- File: `epfl-campus.jpg`
-- Subject: EPFL Rolex Learning Center
-- Photographer: Fridolin freudenfett
-- Source: https://commons.wikimedia.org/wiki/File:EPFL_Rolex_Learning_Center.jpg
-- License: Creative Commons Attribution-ShareAlike 4.0 International
-- License URL: https://creativecommons.org/licenses/by-sa/4.0/
-- Download: Wikimedia's 1280-pixel preview of the original photograph.
-- Presentation: The website displays the image with a CSS crop and blue overlay. The downloaded image file is unchanged.
+## Campus background
 
-The original personal portrait, `yizhi-zhao.jpg`, was supplied by the website owner and is separate from the campus photograph.
+- Website file: `epfl-campus.jpg`
+- Supplied file: `campus photo.jpg`
+- Original dimensions: 1620 × 1080 pixels
+- Photographer: Yizhi Zhao
+- Story supplied by Yizhi: taken on his first day at the EPFL campus.
+- Visible credit: "Campus photo taken by Yizhi on his first day at EPFL."
+- Presentation: CSS crops the display area and applies a light blue overlay. The supplied JPEG is copied unchanged.
+
+## Outdoor personal photograph
+
+- Website file: `yizhi-zhao.jpg`
+- Supplied file: `Yizhi_pic.jpg`
+- Original dimensions: 1079 × 1619 pixels
+- Supplied by the website owner; shown with the caption "Off campus" without asserting a location.
+- The supplied JPEG is copied unchanged and has no click-to-open or enlargement interaction.

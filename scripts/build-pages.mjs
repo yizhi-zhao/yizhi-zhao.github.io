@@ -10,7 +10,7 @@ const routes = [
   { key: 'publications', file: 'publications.html', en: 'Publications', zh: '论文', title: 'Publications' },
   { key: 'background', file: 'background.html', en: 'Background', zh: '经历', title: 'Background' }
 ];
-const fragments = Object.fromEntries(await Promise.all(['overview', 'research', 'publications', 'background', 'contact'].map(async name => [name, (await readFile(path.join(root, 'content', `${name}.html`), 'utf8')).replaceAll('\r\n', '\n')])));
+const fragments = Object.fromEntries(await Promise.all(['overview', 'research', 'publications', 'background', 'contact', 'personal'].map(async name => [name, (await readFile(path.join(root, 'content', `${name}.html`), 'utf8')).replaceAll('\r\n', '\n')])));
 const bilingual = (tag, en, zh, attributes = '') => `<${tag}${attributes} data-en="${en}" data-zh="${zh}">${en}</${tag}>`;
 
 // Presentation assets are separate from the CV text in content/.
@@ -65,7 +65,7 @@ function explore() {
 for (const route of routes) {
   let content;
   if (route.key === 'home') {
-    content = `<div class="campus-cover" role="img" aria-label="EPFL Rolex Learning Center campus photograph"><div class="cover-grid" aria-hidden="true"></div><div class="cover-caption"><span>EPFL</span><span>LAUSANNE, SWITZERLAND</span></div><span class="cover-scan" aria-hidden="true"></span></div>${fragments.overview}${explore()}${fragments.contact}`;
+    content = `<div class="campus-cover" role="img" aria-label="EPFL campus photographed by Yizhi on his first day"><div class="cover-grid" aria-hidden="true"></div><div class="cover-caption"><span>EPFL</span><span>LAUSANNE, SWITZERLAND</span></div><span class="cover-scan" aria-hidden="true"></span></div>${fragments.overview}${explore()}${fragments.contact}${fragments.personal}`;
   } else {
     let body = fragments[route.key];
     if (route.key !== 'background') body = body.replace(/<h2 id="(?:research|publications)-title"[^>]*>[\s\S]*?<\/h2>/, '').replace(/aria-labelledby="(?:research|publications)-title"/, 'aria-labelledby="page-title"');
@@ -76,7 +76,7 @@ for (const route of routes) {
     content = `${pageHeader(route)}${body}<nav class="page-bottom-nav" aria-label="Other pages">${routes.filter(item => item.key !== route.key).map(item => bilingual('a', `${item.en} →`, `${item.zh} →`, ` href="${item.file}" data-page-link`)).join('')}</nav>`;
   }
   const nav = routes.map(item => `<a href="${item.file}" data-page-link${route.key === item.key ? ' aria-current="page"' : ''} data-en="${item.en}" data-zh="${item.zh}">${item.en}</a>`).join('');
-  const footerCredit = route.key === 'home' ? `<details class="photo-credit"><summary data-en="Campus photo credit" data-zh="校园图片来源">Campus photo credit</summary><p><a href="https://commons.wikimedia.org/wiki/File:EPFL_Rolex_Learning_Center.jpg" target="_blank" rel="noopener noreferrer">Fridolin freudenfett</a> · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a><br><span data-en="Displayed with a CSS crop and blue overlay." data-zh="使用 CSS 裁切展示并添加蓝色遮罩。">Displayed with a CSS crop and blue overlay.</span></p></details>` : '';
+  const footerCredit = route.key === 'home' ? `<p class="photo-credit" data-en="Campus photo taken by Yizhi on his first day at EPFL." data-zh="校园照片由 Yizhi 在来到 EPFL 校园的第一天拍摄。">Campus photo taken by Yizhi on his first day at EPFL.</p>` : '';
   const html = `<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f7faff">

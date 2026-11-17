@@ -7,7 +7,7 @@
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, "Microsoft YaHei", sans-serif;
   /* Replace this image file to change the EPFL background. */
   --campus-image: url("assets/epfl-campus.jpg");
-  --campus-position: center 52%;
+  --campus-position: center 65%;
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: 34px; }
@@ -153,8 +153,8 @@ body { background: linear-gradient(135deg, #f5f9ff, #fff 58%, #f2f7ff); min-heig
 .main-nav a:hover { color: #205c9c; background: #eef4fd; text-decoration: none; }
 .reading-progress { position: fixed; z-index: 40; top: 0; left: 0; height: 2px; width: 100%; background: linear-gradient(90deg, #3270bb, #7cbbff); transform: scaleX(var(--scroll-progress, 0)); transform-origin: left; }
 .page-content { animation: content-enter .5s both; }
-.campus-cover { position: relative; height: 272px; margin-top: 16px; isolation: isolate; overflow: hidden; border-radius: 12px; background-color: #8baccc; background-image: linear-gradient(105deg, #0b294c9c, #215f9e25 70%, #18467440), var(--campus-image); background-size: cover; background-position: var(--campus-position); box-shadow: 0 18px 45px #244b7912; }
-.cover-grid { position: absolute; inset: 0; z-index: -1; opacity: .14; background-image: linear-gradient(#fff6 1px, transparent 1px), linear-gradient(90deg, #fff6 1px, transparent 1px); background-size: 36px 36px; mask-image: linear-gradient(90deg, #000, transparent 70%); }
+.campus-cover { position: relative; height: 272px; margin-top: 16px; isolation: isolate; overflow: hidden; border-radius: 12px; background-color: #8baccc; background-image: linear-gradient(105deg, #0b294c6b, #215f9e0d 70%, #18467420), var(--campus-image); background-size: cover; background-position: var(--campus-position); box-shadow: 0 18px 45px #244b7912; }
+.cover-grid { position: absolute; inset: 0; z-index: -1; opacity: .07; background-image: linear-gradient(#fff6 1px, transparent 1px), linear-gradient(90deg, #fff6 1px, transparent 1px); background-size: 36px 36px; mask-image: linear-gradient(90deg, #000, transparent 70%); }
 .cover-caption { position: absolute; left: 30px; bottom: 25px; display: flex; flex-direction: column; gap: 7px; color: white; }
 .cover-caption span:first-child { font-size: 26px; font-weight: 600; letter-spacing: 2px; line-height: 1.2; }
 .cover-caption span:last-child { font: 9px/1.6 ui-monospace, Consolas, monospace; letter-spacing: 2px; }
@@ -206,7 +206,7 @@ body[data-page="background"] #about { margin-top: 25px; }
 .contact h2 { font-size: 21px; border: 0; margin-bottom: 12px; padding-bottom: 0; }
 .footer { align-items: flex-start; }
 .footer-links { display: flex; gap: 23px; }
-.photo-credit { font-size: 10px; margin-top: 9px; color: var(--muted); }
+.photo-credit { font-size: 10px; margin: 9px 0 0; max-width: 460px; color: var(--muted); line-height: 1.8; }
 .photo-credit summary { cursor: pointer; }
 .photo-credit p { line-height: 1.8; margin: 7px 0 0; max-width: 310px; }
 @keyframes content-enter { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
@@ -244,7 +244,7 @@ body[data-page="background"] #about { margin-top: 25px; }
   .tools { margin-left: 168px; }
 }
 @media (max-width: 560px) {
-  .campus-cover { height: 203px; background-position: 43% 53%; }
+  .campus-cover { height: 203px; background-position: 43% 65%; }
   .cover-caption { left: 17px; bottom: 20px; gap: 6px; }
   .cover-caption span:first-child { font-size: 23px; }
   .cover-caption span:last-child { font-size: 7px; letter-spacing: 1px; }
@@ -340,3 +340,18 @@ body[data-page="background"] #about { margin-top: 25px; }
   .entry-with-logo > .entry-copy { grid-template-columns: 80px 1fr; gap: 12px; }
   .entry-copy > .entry-logo { width: 80px; height: 55px; padding: 4px; }
 }
+
+/* A quiet personal note at the end of the homepage. */
+.personal-section { display: flex; align-items: center; justify-content: space-between; gap: 25px; margin-top: 36px; padding: 24px 27px; background: #edf5fc80; border: 1px solid #dfeaf5; border-radius: 9px; }
+.personal-section h2 { font-size: 17px; font-weight: 500; margin: 0 0 6px; color: var(--ink); }
+.personal-section p { font-size: 13px; line-height: 1.9; margin: 0; color: var(--muted); }
+.personal-doodles { display: flex; gap: 12px; color: #6d92ae; flex-shrink: 0; }
+.personal-doodles svg { display: block; width: 33px; height: 33px; }
+@media (max-width: 560px) {
+  .personal-section { align-items: flex-start; flex-direction: column; gap: 15px; padding: 20px; margin-top: 29px; }
+  .personal-doodles { gap: 12px; }
+  .personal-doodles svg { width: 27px; height: 27px; }
+  .footer { flex-wrap: wrap; gap: 17px; }
+  .photo-credit { max-width: 100%; }
+}
+@media print { .personal-section { border: 0; padding: 0; background: none; } .personal-doodles { display: none; } }
