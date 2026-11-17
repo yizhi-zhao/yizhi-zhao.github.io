@@ -16,13 +16,11 @@
     if (!portraitButton) return;
     portrait.classList.toggle('is-flipped', showFormalPortrait);
     portraitButton.setAttribute('aria-pressed', String(showFormalPortrait));
-    portraitButton.setAttribute('aria-label', language === 'en'
-      ? 'Flip between off-campus and on-campus photos' : '切换校园内外照片');
+    portraitButton.setAttribute('aria-label', showFormalPortrait
+      ? (language === 'en' ? 'Show outdoor photo' : '查看户外照片')
+      : (language === 'en' ? 'Show formal portrait' : '查看正式照片'));
     portrait.querySelector('.portrait-face--outdoors').setAttribute('aria-hidden', String(showFormalPortrait));
     portrait.querySelector('.portrait-face--formal').setAttribute('aria-hidden', String(!showFormalPortrait));
-    portrait.querySelector('#portrait-mode').textContent = showFormalPortrait
-      ? (language === 'en' ? 'On campus' : '校园之中')
-      : (language === 'en' ? 'Off campus' : '校园之外');
   }
 
   function setLanguage(nextLanguage) {
