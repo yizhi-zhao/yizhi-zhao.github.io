@@ -47,7 +47,7 @@ function decorateBackground(body) {
 }
 
 function pageHeader(route) {
-  const zh = route.key === 'research' ? '研究项目' : route.key === 'publications' ? '论文发表' : '研究与工作经历';
+  const zh = route.key === 'research' ? '研究项目' : route.key === 'publications' ? '论文发表' : '个人背景';
   return `<div class="page-heading"><div>${bilingual('a', 'Home', '首页', ' href="index.html" class="back-link" data-page-link')}<h1 id="page-title" data-en="${route.en}" data-zh="${zh}">${route.en}</h1><span class="heading-rule" aria-hidden="true"></span></div><img class="page-art" src="assets/research-lines.svg" width="520" height="300" alt="" aria-hidden="true"></div>`;
 }
 
