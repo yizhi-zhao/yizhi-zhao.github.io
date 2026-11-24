@@ -1,22 +1,28 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="560" height="400" viewBox="0 0 560 400" fill="none">
- <defs><linearGradient id="bg" x2="560" y2="400" gradientUnits="userSpaceOnUse"><stop stop-color="#edf4fb"/><stop offset="1" stop-color="#e7eef6"/></linearGradient><linearGradient id="sensor" x1="125" y1="242" x2="401" y2="114" gradientUnits="userSpaceOnUse"><stop stop-color="#5d9ddd" stop-opacity=".35"/><stop offset="1" stop-color="#9dc8ee" stop-opacity=".05"/></linearGradient><filter id="s"><feDropShadow dy="6" stdDeviation="7" flood-color="#52709b" flood-opacity=".16"/></filter></defs>
- <rect width="560" height="400" rx="18" fill="url(#bg)"/>
- <g stroke="#b8cde4" opacity=".4"><path d="M32 45h496M32 355h496M56 24v352M504 24v352"/><path d="M48 56h16m-8-8v16M496 344h16m-8-8v16" stroke-width="2"/></g>
- <path d="M39 173h482v108H39Z" fill="#d4e0ed"/>
- <path d="M235 70h108v274H235Z" fill="#d4e0ed"/>
- <g stroke="#aec1d8" stroke-width="1.5"><path d="M39 173h196V70m108 0v103h178M39 281h196v63m108 0v-63h178"/><path d="M40 227h166m170 0h145M289 70v77m0 160v37" stroke="#fff" stroke-width="2" stroke-dasharray="13 11"/></g>
- <path d="m125 242 280-118v201Z" fill="url(#sensor)"/>
- <path d="m125 242 280-118m-280 118 280 83" stroke="#71a2d3" stroke-dasharray="5 6" opacity=".7"/>
- <path d="M172 222a51 51 0 0 1 2 36m48-57a101 101 0 0 1 4 72m47-94a151 151 0 0 1 5 107" stroke="#9dc0e2" stroke-width="1.2"/>
- <g filter="url(#s)"><rect x="91" y="226" width="59" height="30" rx="7" fill="#2f649d"/><rect x="106" y="231" width="24" height="20" rx="4" fill="#b5d7ed"/><path d="M96 234v14m49-14v14" stroke="#e2f3ff" stroke-width="2"/></g>
- <rect x="281" y="175" width="30" height="58" rx="7" fill="#7b97b6" stroke="#5f7a99" filter="url(#s)"/>
- <rect x="286" y="189" width="20" height="22" rx="4" fill="#d4e2ef"/>
- <ellipse cx="303" cy="191" rx="43" ry="55" stroke="#c6a466" stroke-width="2" stroke-dasharray="5 5" transform="rotate(24 303 191)"/>
- <ellipse cx="303" cy="191" rx="57" ry="70" fill="#e6c680" opacity=".12" transform="rotate(24 303 191)"/>
- <path d="m363 145 16 28h-32Z" fill="#f5e4bb" stroke="#b89653" stroke-width="1.4"/>
- <path d="M363 153v9m0 4v1" stroke="#9e7a3b" stroke-width="2" stroke-linecap="round"/>
- <path d="M147 241c74 0 91 20 109 62" stroke="#5386bd" stroke-width="2.7" stroke-dasharray="6 5" stroke-linecap="round"/>
- <circle cx="256" cy="303" r="5" fill="#6295c9"/>
- <rect x="392" y="80" width="93" height="58" rx="6" fill="#fff" fill-opacity=".75" stroke="#c3d3e6"/>
- <path d="M403 122c13 0 12-29 24-29s12 29 24 29 12-20 22-20" stroke="#9ab7d8" stroke-width="2"/><path d="M403 126h71" stroke="#cfdaea"/>
+  <defs>
+    <g id="car">
+      <rect x="-27" y="-14" width="54" height="28" rx="7" fill="currentColor" stroke="#f7fbff" stroke-width="2"/>
+      <rect x="-13" y="-9" width="24" height="18" rx="4" fill="#d3e4f6"/>
+      <path d="M-5-9v18m21-19v5m0 10v5" stroke="#f7fbff" stroke-width="2" stroke-linecap="round"/>
+    </g>
+  </defs>
+  <rect width="560" height="400" fill="#f2f7fd"/>
+  <!-- Top-down intersection with a crossing vehicle and a displaced detection box. -->
+  <rect x="23" y="32" width="514" height="288" rx="12" fill="#e1ede5"/>
+  <path d="M23 182h514M341 32v288" stroke="#a8b8cb" stroke-width="114"/>
+  <path d="M23 182h256m124 0h134M341 32v90m0 120v78" stroke="#fafcff" stroke-width="3" stroke-dasharray="12 12"/>
+  <path d="M30 124h249V39m124 0v85h128M30 240h249v73m124 0v-73h128" stroke="#f6faf8" stroke-width="5"/>
+  <path d="M150 208 459 92v181Z" fill="#c0def6" fill-opacity=".57" stroke="#77a5d1" stroke-width="2.5" stroke-dasharray="7 7"/>
+  <path d="M155 207h132" stroke="#2f74b5" stroke-width="4" stroke-dasharray="9 7" stroke-linecap="round"/>
+  <use href="#car" transform="translate(124 208)" style="color:#2b639d"/>
+  <use href="#car" transform="translate(313 180) rotate(90)" style="color:#426989"/>
+  <rect x="290" y="142" width="46" height="78" rx="8" stroke="#245980" stroke-width="3"/>
+  <rect x="314" y="174" width="46" height="78" rx="8" fill="#ffe5bc" fill-opacity=".35" stroke="#a9671e" stroke-width="3.5" stroke-dasharray="7 5"/>
+  <path d="m313 180 24 33m-2-11 2 11-10-4" stroke="#a9671e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <g font-family="system-ui, sans-serif" font-size="28" font-weight="600" fill="#36536e">
+    <rect x="93" y="349" width="27" height="20" rx="3" fill="none" stroke="#245980" stroke-width="3"/>
+    <text x="134" y="369">Vehicle</text>
+    <rect x="282" y="349" width="27" height="20" rx="3" fill="none" stroke="#a9671e" stroke-width="3" stroke-dasharray="4 3"/>
+    <text x="323" y="369">Detection</text>
+  </g>
 </svg>

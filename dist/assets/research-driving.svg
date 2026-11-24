@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="300" viewBox="0 0 520 300" fill="none">
+  <defs>
+    <marker id="waypoint" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto" viewBox="0 0 5 5">
+      <path d="M0 0 5 2.5 0 5Z" fill="#3379c0"/>
+    </marker>
+  </defs>
+  <path d="M105 228h152c76 0 63-156 155-156h49" stroke="#9ebadd" stroke-width="109" stroke-linecap="round"/>
+  <path d="M105 228h152c76 0 63-156 155-156h49" stroke="#dce9f8" stroke-width="104" stroke-linecap="round"/>
+  <path d="M105 228h152c76 0 63-156 155-156h49" stroke="#f8fbff" stroke-width="4" stroke-dasharray="14 13"/>
+  <path d="M177 248h80c99 0 86-158 161-158h43" stroke="#3379c0" stroke-width="5" stroke-linecap="round" marker-end="url(#waypoint)"/>
+  <g fill="#f4f9ff" stroke="#3379c0" stroke-width="3">
+    <circle cx="247" cy="248" r="6"/>
+    <circle cx="325" cy="207" r="6"/>
+    <circle cx="379" cy="112" r="6"/>
+  </g>
+  <g transform="translate(140 231)">
+    <path d="M6 4h37l17 7v12l-17 7H6a6 6 0 0 1-6-6V10a6 6 0 0 1 6-6Z" fill="#2d619a" stroke="#1d4e84" stroke-width="2"/>
+    <path d="M14 9h24l9 4v8l-9 4H14Z" fill="#c5def6"/>
+    <path d="M19 9v16m19-16v16" stroke="#658ab5" stroke-width="2"/>
+    <path d="M53 10v4m0 6v4" stroke="#f3f8ff" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>

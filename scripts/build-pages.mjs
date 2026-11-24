@@ -6,9 +6,9 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const origin = 'https://yizhi-zhao.github.io/';
 const routes = [
   { key: 'home', file: 'index.html', en: 'Home', zh: '首页', title: 'Yizhi Zhao' },
-  { key: 'research', file: 'research.html', en: 'Research', zh: '研究', title: 'Research', headingZh: '研究项目', art: 'assets/research-lines.svg' },
+  { key: 'research', file: 'research.html', en: 'Research', zh: '研究', title: 'Research', headingZh: '研究项目', art: 'assets/research-driving.svg' },
   { key: 'publications', file: 'publications.html', en: 'Publications', zh: '论文', title: 'Publications', headingZh: '论文发表', art: 'assets/publication-papers.svg' },
-  { key: 'background', file: 'background.html', en: 'Background', zh: '经历', title: 'Background', headingZh: '个人背景', art: 'assets/background-timeline.svg' },
+  { key: 'background', file: 'background.html', en: 'Background', zh: '经历', title: 'Background', headingZh: '个人背景', art: 'assets/background-timeline.svg', cardId: 'about', cardZh: '个人经历' },
   { key: 'course-projects', file: 'course-projects.html', en: 'Course Projects', zh: '课程项目', title: 'Course Projects', art: 'assets/coursework-notes.svg' }
 ];
 const fragments = Object.fromEntries(await Promise.all(['overview', 'research', 'course-projects', 'publications', 'background', 'coursework', 'contact', 'personal'].map(async name => [name, (await readFile(path.join(root, 'content', `${name}.html`), 'utf8')).replaceAll('\r\n', '\n')])));
@@ -16,10 +16,34 @@ const bilingual = (tag, en, zh, attributes = '') => `<${tag}${attributes} data-e
 
 // Presentation assets are separate from the CV text in content/.
 const researchVisuals = {
-  'Geographic Generalization in End-to-End Planning at Worldwide Scale': { file: 'geographic-generalization.svg', en: 'Concept illustration of geographic generalization across driving environments', zh: '不同驾驶环境间地理泛化的概念示意图' },
-  'Pushing the Limits of State-of-the-Art End-to-End Driving Planners': { file: 'temporal-planning.svg', en: 'Concept illustration of temporal token fusion and future scene prediction', zh: '时序 token 融合与未来场景预测的概念示意图' },
-  'Autonomous Vehicles Test Scenario Generation in Perception-Limited Environments': { file: 'perception-scenarios.svg', en: 'Concept illustration of sensor uncertainty and safety-critical driving scenarios', zh: '传感器不确定性与安全关键驾驶场景的概念示意图' },
-  'Control of Connected and Autonomous Vehicles Utilizing Road Shoulder Lane Based on Deep Reinforcement Learning': { file: 'shoulder-lane-control.svg', en: 'Concept illustration of reinforcement learning for highway shoulder-lane control', zh: '强化学习高速公路路肩车道控制的概念示意图' }
+  'Geographic Generalization in End-to-End Planning at Worldwide Scale': {
+    file: 'geographic-generalization.svg',
+    altEn: 'Planned paths on a city street, a divided highway, and a winding rural road',
+    altZh: '城市街道、分隔式高速公路和乡间弯道上的规划轨迹',
+    captionEn: 'Compare planning across road environments with a shared benchmark.',
+    captionZh: '用同一套评测基准比较不同道路环境下的规划表现。'
+  },
+  'Pushing the Limits of State-of-the-Art End-to-End Driving Planners': {
+    file: 'temporal-planning.svg',
+    altEn: 'Past and current driving frames lead to a predicted future frame and trajectory',
+    altZh: '历史和当前驾驶帧连接到预测的未来场景与轨迹',
+    captionEn: 'Fuse past observations and predict the next scene to help plan the trajectory.',
+    captionZh: '融合历史观测并预测未来场景，辅助轨迹规划。'
+  },
+  'Autonomous Vehicles Test Scenario Generation in Perception-Limited Environments': {
+    file: 'perception-scenarios.svg',
+    altEn: 'At an intersection, an amber dashed outline shows a detection offset from a crossing car',
+    altZh: '在交叉路口，橙色虚线框与横穿的车辆错开，表示感知误差',
+    captionEn: 'Use sensor errors in distance and speed to generate critical test scenarios.',
+    captionZh: '将距离和速度的感知误差纳入关键测试场景生成。'
+  },
+  'Control of Connected and Autonomous Vehicles Utilizing Road Shoulder Lane Based on Deep Reinforcement Learning': {
+    file: 'shoulder-lane-control.svg',
+    altEn: 'A connected vehicle takes a highlighted shoulder lane beside regular freeway traffic',
+    altZh: '在高速公路的混合车流中，网联车辆驶入高亮的路肩车道',
+    captionEn: 'Evaluate a reinforcement learning policy for shoulder-lane use in mixed traffic.',
+    captionZh: '在混合车流中评估强化学习的路肩车道控制策略。'
+  }
 };
 const organizationLogos = {
   'Bosch China': { file: 'bosch.svg', alt: 'Bosch logo' },
@@ -32,7 +56,8 @@ function decorateResearch(body) {
     const title = copy.match(/<h3[^>]*>([^<]+)<\/h3>/)?.[1];
     const visual = researchVisuals[title];
     if (!visual) return original;
-    return `<article class="project project-with-image"${attributes}><figure class="project-visual"><img src="assets/research/${visual.file}" width="560" height="400" alt="${visual.en}" data-alt-en="${visual.en}" data-alt-zh="${visual.zh}" loading="lazy" decoding="async"></figure><div class="project-copy">${copy}</div></article>`;
+    const caption = bilingual('figcaption', visual.captionEn, visual.captionZh);
+    return `<article class="project project-with-image"${attributes}><figure class="project-visual"><img src="assets/research/${visual.file}" width="560" height="400" alt="${visual.altEn}" data-alt-en="${visual.altEn}" data-alt-zh="${visual.altZh}" loading="lazy" decoding="async">${caption}</figure><div class="project-copy">${copy}</div></article>`;
   });
 }
 function decoratePublications(body) {
@@ -52,17 +77,12 @@ function pageHeader(route) {
   return `<div class="page-heading"><div>${bilingual('a', 'Home', '首页', ' href="index.html" class="back-link" data-page-link')}<h1 id="page-title" data-en="${route.en}" data-zh="${zh}">${route.en}</h1><span class="heading-rule" aria-hidden="true"></span></div><img class="page-art" src="${route.art}" width="520" height="300" alt="" aria-hidden="true"></div>`;
 }
 
-const pathsArt = `<svg viewBox="0 0 160 100" fill="none" aria-hidden="true"><path d="M10 82C45 75 40 35 76 49s39-26 75-35" stroke="currentColor" stroke-width="2"/><path d="M10 82C45 80 68 94 91 59s39-24 60-45M10 82C38 45 75 20 151 14" stroke="currentColor" stroke-dasharray="3 5" opacity=".4"/><circle cx="76" cy="49" r="5" fill="currentColor"/><circle cx="151" cy="14" r="5" stroke="currentColor"/></svg>`;
-const paperArt = `<svg viewBox="0 0 160 100" fill="none" aria-hidden="true"><rect x="54" y="13" width="62" height="78" rx="3" stroke="currentColor" opacity=".3"/><rect x="42" y="5" width="62" height="78" rx="3" fill="#edf4ff" stroke="currentColor"/><path d="M55 24h36M55 34h24M55 53h36M55 63h27" stroke="currentColor" stroke-width="2"/><path d="m99 66 10 10 17-23" stroke="currentColor" stroke-width="2"/></svg>`;
-const nodesArt = `<svg viewBox="0 0 160 100" fill="none" aria-hidden="true"><path d="m24 76 49-46 56 35" stroke="currentColor"/><path d="M24 76h105M73 30V8" stroke="currentColor" stroke-dasharray="3 4" opacity=".4"/><circle cx="24" cy="76" r="8" fill="#edf4ff" stroke="currentColor"/><circle cx="73" cy="30" r="10" fill="#edf4ff" stroke="currentColor"/><circle cx="129" cy="65" r="8" fill="#edf4ff" stroke="currentColor"/></svg>`;
-const courseArt = `<svg viewBox="0 0 160 100" fill="none" aria-hidden="true"><path d="M80 25C63 15 42 14 20 22v61c22-8 43-7 60 3 17-10 38-11 60-3V22c-22-8-43-7-60 3Z" fill="#edf4ff" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M80 25v61M32 36c12-3 23-2 35 3M32 48c12-3 23-2 35 3M32 60c12-3 23-2 35 3M93 55h33M93 67h25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M105 20v25l8-5 8 5V18" fill="#dbe9fb" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>`;
 function explore() {
-  return `<nav class="explore-nav" aria-label="Explore the website">
-    <a class="explore-link" href="research.html" id="research" data-page-link><span class="explore-art">${pathsArt}</span>${bilingual('h2', 'Research', '研究项目')}<span class="explore-arrow" aria-hidden="true">↗</span></a>
-    <a class="explore-link" href="publications.html" id="publications" data-page-link><span class="explore-art">${paperArt}</span>${bilingual('h2', 'Publications', '论文发表')}<span class="explore-arrow" aria-hidden="true">↗</span></a>
-    <a class="explore-link" href="background.html" id="about" data-page-link><span class="explore-art">${nodesArt}</span>${bilingual('h2', 'Background', '个人经历')}<span class="explore-arrow" aria-hidden="true">↗</span></a>
-    <a class="explore-link" href="course-projects.html" id="course-projects" data-page-link><span class="explore-art">${courseArt}</span>${bilingual('h2', 'Course Projects', '课程项目')}<span class="explore-arrow" aria-hidden="true">↗</span></a>
-  </nav>`;
+  const cards = routes.filter(route => route.art).map(route => {
+    const title = bilingual('h2', route.en, route.cardZh || route.headingZh || route.zh);
+    return `<a class="explore-link" href="${route.file}" id="${route.cardId || route.key}" data-page-link><img class="explore-art" src="${route.art}" width="520" height="300" alt="">${title}<span class="explore-arrow" aria-hidden="true">&#8599;</span></a>`;
+  });
+  return `<nav class="explore-nav" aria-label="Explore the website">${cards.join('')}</nav>`;
 }
 
 for (const route of routes) {
