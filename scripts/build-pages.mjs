@@ -6,9 +6,9 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const origin = 'https://yizhi-zhao.github.io/';
 const routes = [
   { key: 'home', file: 'index.html', en: 'Home', zh: '首页', title: 'Yizhi Zhao' },
-  { key: 'research', file: 'research.html', en: 'Research', zh: '研究', title: 'Research', headingZh: '研究项目' },
-  { key: 'publications', file: 'publications.html', en: 'Publications', zh: '论文', title: 'Publications', headingZh: '论文发表' },
-  { key: 'background', file: 'background.html', en: 'Background', zh: '经历', title: 'Background', headingZh: '个人背景' },
+  { key: 'research', file: 'research.html', en: 'Research', zh: '研究', title: 'Research', headingZh: '研究项目', art: 'assets/research-lines.svg' },
+  { key: 'publications', file: 'publications.html', en: 'Publications', zh: '论文', title: 'Publications', headingZh: '论文发表', art: 'assets/publication-papers.svg' },
+  { key: 'background', file: 'background.html', en: 'Background', zh: '经历', title: 'Background', headingZh: '个人背景', art: 'assets/background-timeline.svg' },
   { key: 'course-projects', file: 'course-projects.html', en: 'Course Projects', zh: '课程项目', title: 'Course Projects', art: 'assets/coursework-notes.svg' }
 ];
 const fragments = Object.fromEntries(await Promise.all(['overview', 'research', 'course-projects', 'publications', 'background', 'coursework', 'contact', 'personal'].map(async name => [name, (await readFile(path.join(root, 'content', `${name}.html`), 'utf8')).replaceAll('\r\n', '\n')])));
@@ -49,7 +49,7 @@ function decorateBackground(body) {
 
 function pageHeader(route) {
   const zh = route.headingZh || route.zh;
-  return `<div class="page-heading"><div>${bilingual('a', 'Home', '首页', ' href="index.html" class="back-link" data-page-link')}<h1 id="page-title" data-en="${route.en}" data-zh="${zh}">${route.en}</h1><span class="heading-rule" aria-hidden="true"></span></div><img class="page-art" src="${route.art || 'assets/research-lines.svg'}" width="520" height="300" alt="" aria-hidden="true"></div>`;
+  return `<div class="page-heading"><div>${bilingual('a', 'Home', '首页', ' href="index.html" class="back-link" data-page-link')}<h1 id="page-title" data-en="${route.en}" data-zh="${zh}">${route.en}</h1><span class="heading-rule" aria-hidden="true"></span></div><img class="page-art" src="${route.art}" width="520" height="300" alt="" aria-hidden="true"></div>`;
 }
 
 const pathsArt = `<svg viewBox="0 0 160 100" fill="none" aria-hidden="true"><path d="M10 82C45 75 40 35 76 49s39-26 75-35" stroke="currentColor" stroke-width="2"/><path d="M10 82C45 80 68 94 91 59s39-24 60-45M10 82C38 45 75 20 151 14" stroke="currentColor" stroke-dasharray="3 5" opacity=".4"/><circle cx="76" cy="49" r="5" fill="currentColor"/><circle cx="151" cy="14" r="5" stroke="currentColor"/></svg>`;
