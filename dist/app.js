@@ -41,7 +41,7 @@
     if (citationToggle && citationPanel) citationToggle.textContent = citationPanel.hidden
       ? (language === 'en' ? 'Citation' : '引用')
       : (language === 'en' ? 'Hide citation' : '收起引用');
-    const titles = { home: ['Yizhi Zhao | EPFL', 'Yizhi Zhao | 个人主页'], research: ['Research | Yizhi Zhao', '研究项目 | Yizhi Zhao'], publications: ['Publications | Yizhi Zhao', '论文发表 | Yizhi Zhao'], background: ['Background | Yizhi Zhao', '个人经历 | Yizhi Zhao'] };
+    const titles = { home: ['Yizhi Zhao | EPFL', 'Yizhi Zhao | 个人主页'], research: ['Research | Yizhi Zhao', '研究项目 | Yizhi Zhao'], 'course-projects': ['Course Projects | Yizhi Zhao', '课程项目 | Yizhi Zhao'], publications: ['Publications | Yizhi Zhao', '论文发表 | Yizhi Zhao'], background: ['Background | Yizhi Zhao', '个人经历 | Yizhi Zhao'] };
     document.title = (titles[document.body.dataset.page] || titles.home)[language === 'en' ? 0 : 1];
     try { localStorage.setItem('yizhi-portfolio-language', language); } catch { /* Browsing with storage disabled is supported. */ }
   }
@@ -72,7 +72,7 @@
   document.addEventListener('click', event => {
     if (!event.target.closest('.site-header')) closeMenu();
   });
-  window.matchMedia('(min-width: 741px)').addEventListener('change', event => {
+  window.matchMedia('(min-width: 1001px)').addEventListener('change', event => {
     if (event.matches) closeMenu();
   });
 

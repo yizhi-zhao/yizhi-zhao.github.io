@@ -6,11 +6,12 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const origin = 'https://yizhi-zhao.github.io/';
 const routes = [
   { key: 'home', file: 'index.html', en: 'Home', zh: '首页', title: 'Yizhi Zhao' },
-  { key: 'research', file: 'research.html', en: 'Research', zh: '研究', title: 'Research' },
-  { key: 'publications', file: 'publications.html', en: 'Publications', zh: '论文', title: 'Publications' },
-  { key: 'background', file: 'background.html', en: 'Background', zh: '经历', title: 'Background' }
+  { key: 'research', file: 'research.html', en: 'Research', zh: '研究', title: 'Research', headingZh: '研究项目' },
+  { key: 'course-projects', file: 'course-projects.html', en: 'Course Projects', zh: '课程项目', title: 'Course Projects' },
+  { key: 'publications', file: 'publications.html', en: 'Publications', zh: '论文', title: 'Publications', headingZh: '论文发表' },
+  { key: 'background', file: 'background.html', en: 'Background', zh: '经历', title: 'Background', headingZh: '个人背景' }
 ];
-const fragments = Object.fromEntries(await Promise.all(['overview', 'research', 'publications', 'background', 'contact', 'personal'].map(async name => [name, (await readFile(path.join(root, 'content', `${name}.html`), 'utf8')).replaceAll('\r\n', '\n')])));
+const fragments = Object.fromEntries(await Promise.all(['overview', 'research', 'course-projects', 'publications', 'background', 'coursework', 'contact', 'personal'].map(async name => [name, (await readFile(path.join(root, 'content', `${name}.html`), 'utf8')).replaceAll('\r\n', '\n')])));
 const bilingual = (tag, en, zh, attributes = '') => `<${tag}${attributes} data-en="${en}" data-zh="${zh}">${en}</${tag}>`;
 
 // Presentation assets are separate from the CV text in content/.
@@ -47,16 +48,18 @@ function decorateBackground(body) {
 }
 
 function pageHeader(route) {
-  const zh = route.key === 'research' ? '研究项目' : route.key === 'publications' ? '论文发表' : '个人背景';
+  const zh = route.headingZh || route.zh;
   return `<div class="page-heading"><div>${bilingual('a', 'Home', '首页', ' href="index.html" class="back-link" data-page-link')}<h1 id="page-title" data-en="${route.en}" data-zh="${zh}">${route.en}</h1><span class="heading-rule" aria-hidden="true"></span></div><img class="page-art" src="assets/research-lines.svg" width="520" height="300" alt="" aria-hidden="true"></div>`;
 }
 
 const pathsArt = `<svg viewBox="0 0 160 100" fill="none" aria-hidden="true"><path d="M10 82C45 75 40 35 76 49s39-26 75-35" stroke="currentColor" stroke-width="2"/><path d="M10 82C45 80 68 94 91 59s39-24 60-45M10 82C38 45 75 20 151 14" stroke="currentColor" stroke-dasharray="3 5" opacity=".4"/><circle cx="76" cy="49" r="5" fill="currentColor"/><circle cx="151" cy="14" r="5" stroke="currentColor"/></svg>`;
 const paperArt = `<svg viewBox="0 0 160 100" fill="none" aria-hidden="true"><rect x="54" y="13" width="62" height="78" rx="3" stroke="currentColor" opacity=".3"/><rect x="42" y="5" width="62" height="78" rx="3" fill="#edf4ff" stroke="currentColor"/><path d="M55 24h36M55 34h24M55 53h36M55 63h27" stroke="currentColor" stroke-width="2"/><path d="m99 66 10 10 17-23" stroke="currentColor" stroke-width="2"/></svg>`;
 const nodesArt = `<svg viewBox="0 0 160 100" fill="none" aria-hidden="true"><path d="m24 76 49-46 56 35" stroke="currentColor"/><path d="M24 76h105M73 30V8" stroke="currentColor" stroke-dasharray="3 4" opacity=".4"/><circle cx="24" cy="76" r="8" fill="#edf4ff" stroke="currentColor"/><circle cx="73" cy="30" r="10" fill="#edf4ff" stroke="currentColor"/><circle cx="129" cy="65" r="8" fill="#edf4ff" stroke="currentColor"/></svg>`;
+const courseArt = `<svg viewBox="0 0 160 100" fill="none" aria-hidden="true"><rect x="24" y="12" width="112" height="76" rx="5" fill="#edf4ff" stroke="currentColor"/><path d="M24 31h112M37 68l20-13 20 8 25-20 22 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="36" cy="22" r="2" fill="currentColor"/><circle cx="44" cy="22" r="2" fill="currentColor"/><path d="M37 77h87" stroke="currentColor" opacity=".3"/></svg>`;
 function explore() {
   return `<nav class="explore-nav" aria-label="Explore the website">
     <a class="explore-link" href="research.html" id="research" data-page-link><span class="explore-art">${pathsArt}</span>${bilingual('h2', 'Research', '研究项目')}<span class="explore-arrow" aria-hidden="true">↗</span></a>
+    <a class="explore-link" href="course-projects.html" id="course-projects" data-page-link><span class="explore-art">${courseArt}</span>${bilingual('h2', 'Course Projects', '课程项目')}<span class="explore-arrow" aria-hidden="true">↗</span></a>
     <a class="explore-link" href="publications.html" id="publications" data-page-link><span class="explore-art">${paperArt}</span>${bilingual('h2', 'Publications', '论文发表')}<span class="explore-arrow" aria-hidden="true">↗</span></a>
     <a class="explore-link" href="background.html" id="about" data-page-link><span class="explore-art">${nodesArt}</span>${bilingual('h2', 'Background', '个人经历')}<span class="explore-arrow" aria-hidden="true">↗</span></a>
   </nav>`;
@@ -72,7 +75,7 @@ for (const route of routes) {
     body = body.replace('href="#paper-itsc2026"', 'href="publications.html#paper-itsc2026"');
     if (route.key === 'research') body = decorateResearch(body);
     if (route.key === 'publications') body = decoratePublications(body);
-    if (route.key === 'background') body = decorateBackground(body);
+    if (route.key === 'background') body = decorateBackground(body.replace('<!-- SELECTED_COURSEWORK -->', fragments.coursework));
     content = `${pageHeader(route)}${body}<nav class="page-bottom-nav" aria-label="Other pages">${routes.filter(item => item.key !== route.key).map(item => `<a href="${item.file}" data-page-link>${bilingual('span', item.en, item.zh)}<span class="nav-arrow" aria-hidden="true">→</span></a>`).join('')}</nav>`;
   }
   const nav = routes.map(item => `<a href="${item.file}" data-page-link${route.key === item.key ? ' aria-current="page"' : ''} data-en="${item.en}" data-zh="${item.zh}">${item.en}</a>`).join('');
@@ -92,4 +95,4 @@ ${bilingual('a', 'Skip to content', '跳转到正文', ' class="skip-link" href=
 </body></html>`;
   await writeFile(path.join(root, 'dist', route.file), html + '\n');
 }
-console.log('Built index.html, research.html, publications.html, and background.html.');
+console.log(`Built ${routes.map(route => route.file).join(', ')}.`);

@@ -1,0 +1,79 @@
+<!--
+课程项目维护说明
+
+当前公开效果
+- 首页与导航中的 Course Projects 可以正常点击；打开后只显示页面标题和 TBD。
+- 真实课程名、项目内容及资料链接暂不公开；下面的模板都放在 HTML 注释中，不会显示在网页上。
+
+开始填写第一个项目
+1. 编辑 content/course-projects.html，而不是生成出来的 dist/course-projects.html。
+2. 删除 section 内唯一显示 TBD 的 p 段落。
+3. 找到下方“课程项目示例模板”，去掉包含网格代码的那个注释块首尾注释符号。
+   维护说明和截图示例仍可保持注释状态。
+4. 替换课程名、项目标题、时间，以及 Overview / My contribution / Results / Methods & tools 的内容。
+   小组项目可以在 My contribution 中说明团队规模，以及个人负责的分析、实现或实验。
+5. 同一段可翻译文本需要同步改三处：data-en 是英文，data-zh 是中文，标签内正文是默认英文。
+   例如项目标题的 data-en 和标签正文都填写英文标题，data-zh 填写对应中文标题。
+   官方英文课程名在中英文页面保持一致时，可直接写普通文本，不加翻译属性。
+6. 每个 article 的 id 使用不同的短名称，例如 my-visualization-project。
+
+添加报告、网页和代码
+7. 只有报告时，保留 Report (PDF) 那一条 a 链接即可；演示网页和代码链接均为可选项。
+   未准备好的链接可以整条删除或保持注释，准备好后再填真实的 href 地址。
+8. PDF 或截图可以放到 dist/assets/course-projects/，需要时自行创建该目录。
+   例如磁盘文件 dist/assets/course-projects/my-report.pdf，对应 href="assets/course-projects/my-report.pdf"。
+   外部网页和代码仓库使用完整的 https 地址。
+9. 需要截图时，把文件末尾的 figure 示例复制到相应 article 内，例如标题区域和项目说明之间。
+   同步填写 alt、data-alt-en、data-alt-zh，并把 src 改成自己的截图路径。
+
+继续新增项目
+10. 在同一个 course-project-grid 中复制一整块 article，填写新内容并换一个 id。
+    网格只保留一层；每个项目对应一个 article。没有需要展示的字段可以删除对应的整个 div。
+11. 在 HTML 属性中，双引号写为 &quot;，与号写为 &amp;，避免破坏标签。
+
+本地检查与发布
+12. 在仓库根目录运行 npm.cmd run build，更新 dist/course-projects.html 及其他公共页面。
+13. 运行 npm.cmd run dev，再打开 http://127.0.0.1:8000/course-projects.html 查看。
+    检查中文和英文、手机和电脑布局，以及自己填写的 PDF、网页和代码链接。
+14. 确认后用 git diff 查看修改，再提交并推送到 main；GitHub Actions 会自动构建并部署。
+    日常只填写项目和课程内容时，可以执行：
+    git add content/course-projects.html content/coursework.html dist
+    git commit -m "Update coursework and course projects"
+    git push origin main
+-->
+<section class="section content-section course-projects" aria-labelledby="page-title">
+  <p class="content-placeholder" data-en="TBD" data-zh="TBD">TBD</p>
+
+<!-- 课程项目示例模板：下面的注释块仅包含可启用的项目网格代码。 -->
+<!--
+<div class="course-project-grid">
+<article class="course-project" id="your-project-slug">
+  <div class="course-project-heading">
+    <div>
+      <p class="course-project-course" data-en="Course name · COURSE-000" data-zh="课程名称 · COURSE-000">Course name · COURSE-000</p>
+      <h2 data-en="Project title" data-zh="项目名称">Project title</h2>
+    </div>
+    <span class="date" data-en="YYYY · Semester" data-zh="YYYY · 学期">YYYY · Semester</span>
+  </div>
+  <dl class="course-project-details">
+    <div><dt data-en="Overview" data-zh="项目概述">Overview</dt><dd data-en="The question, dataset, and approach." data-zh="项目问题、使用的数据与方法。">The question, dataset, and approach.</dd></div>
+    <div><dt data-en="My contribution" data-zh="个人贡献">My contribution</dt><dd data-en="The analysis, implementation, or experiments I was responsible for." data-zh="个人负责的分析、实现或实验。">The analysis, implementation, or experiments I was responsible for.</dd></div>
+    <div><dt data-en="Results" data-zh="主要成果">Results</dt><dd data-en="The main findings, outcomes, and limitations." data-zh="主要发现、成果与局限。">The main findings, outcomes, and limitations.</dd></div>
+    <div><dt data-en="Methods &amp; tools" data-zh="方法与工具">Methods &amp; tools</dt><dd>Python, pandas, ...</dd></div>
+  </dl>
+  <div class="course-project-links">
+    <a href="https://example.com/your-project" target="_blank" rel="noopener noreferrer"><span data-en="Live website" data-zh="演示网页">Live website</span></a>
+    <a href="assets/course-projects/your-report.pdf" target="_blank" rel="noopener noreferrer"><span data-en="Report (PDF)" data-zh="项目报告（PDF）">Report (PDF)</span></a>
+    <a href="https://github.com/your-account/your-project" target="_blank" rel="noopener noreferrer"><span data-en="Code" data-zh="代码">Code</span></a>
+  </div>
+</article>
+</div>
+-->
+
+<!-- 可选截图示例：将 figure 复制到相应 article 内，并替换图片路径和中英文描述。 -->
+<!--
+<figure class="course-project-visual">
+  <img src="assets/course-projects/your-preview.png" alt="Project screenshot description" data-alt-en="Project screenshot description" data-alt-zh="项目截图描述" loading="lazy" decoding="async">
+</figure>
+-->
+</section>

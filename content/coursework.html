@@ -1,0 +1,45 @@
+<!--
+精选课程维护说明
+
+当前公开效果
+- Background 页的 Education 下方保留 Selected Coursework 标题，内容只显示 TBD。
+- 所有课程条目都在下面的注释模板中，当前不展示任何真实课程名。
+
+开始填写课程
+1. 编辑 content/coursework.html；构建脚本会自动把它插入 Background 页。
+   不需要直接修改 dist/background.html，也不需要为每门课修改构建脚本。
+2. 删除 section 内显示 TBD 的 p 段落。
+3. 找到下方“课程列表示例模板”，去掉包含 ul 列表代码的注释块首尾注释符号。
+4. 每门课对应一个 li；复制 li 即可增加课程。整个列表保留一个 ul 外层即可。
+5. 课程名需要翻译时，同步修改 data-en（英文）、data-zh（中文）以及标签内默认英文正文。
+   官方英文课程名若两种语言保持一致，可以改成普通文本，例如 li 中只写课程官方名称。
+6. coursework-meta 一行可以填写课程编号、学期或成绩；不需要这些信息时删除整个 span。
+7. 课程名也可以链接到自己的课程项目，在名称外包一层 a：
+   <a href="course-projects.html#your-project-slug"><span data-en="Course name" data-zh="课程名称">Course name</span></a>
+   链接中的 your-project-slug 必须与 content/course-projects.html 中对应 article 的 id 一致。
+   翻译属性放在链接内的 span 上，便于保留链接本身。
+8. 在 HTML 属性中，双引号写为 &quot;，与号写为 &amp;。
+
+本地检查与发布
+9. 在仓库根目录运行 npm.cmd run build，更新 dist/background.html。
+10. 运行 npm.cmd run dev，打开 http://127.0.0.1:8000/background.html 查看。
+    检查中英文切换、手机排版，以及课程链接（如果填写了链接）。
+11. 确认后用 git diff 查看修改，再提交并推送：
+    git add content/coursework.html content/course-projects.html dist
+    git commit -m "Update coursework and course projects"
+    git push origin main
+-->
+<section class="selected-coursework" aria-labelledby="coursework-title">
+  <h3 id="coursework-title" data-en="Selected Coursework" data-zh="精选课程">Selected Coursework</h3>
+  <p class="content-placeholder" data-en="TBD" data-zh="TBD">TBD</p>
+
+<!-- 课程列表示例模板：下面的注释块仅包含可启用的课程列表代码。 -->
+<!--
+<ul class="coursework-list">
+<li>
+  <span data-en="Course name" data-zh="课程名称">Course name</span>
+  <span class="coursework-meta" data-en="COURSE-000 · YYYY · Semester" data-zh="COURSE-000 · YYYY · 学期">COURSE-000 · YYYY · Semester</span>
+</li>
+</ul>
+-->
+</section>
