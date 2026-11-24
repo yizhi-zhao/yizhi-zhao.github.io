@@ -301,7 +301,6 @@ body[data-page="background"] #about { margin-top: 25px; }
 .project-visual { margin: 5px 0 0; border: 1px solid #d5e3f3; border-radius: 10px; overflow: hidden; background: #eaf2fc; box-shadow: 0 7px 22px #244f7e08; }
 .project-visual img { display: block; width: 100%; height: auto; transition: transform .35s; }
 .project-visual:hover img { transform: scale(1.025); }
-.project-visual figcaption { position: relative; padding: 8px 12px; border-top: 1px solid #d5e3f3; background: #f7faff; color: var(--muted); font-size: .875rem; line-height: 1.5; }
 .project-with-image .project-heading { display: block; }
 .project-with-image .project-heading .date { display: inline-block; margin: 5px 0 4px 13px; }
 .project-with-image .project-copy > p { margin: 9px 0 9px 13px; }

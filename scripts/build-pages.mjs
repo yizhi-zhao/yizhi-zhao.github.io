@@ -6,7 +6,7 @@ const root = fileURLToPath(new URL('../', import.meta.url));
 const origin = 'https://yizhi-zhao.github.io/';
 const routes = [
   { key: 'home', file: 'index.html', en: 'Home', zh: '首页', title: 'Yizhi Zhao' },
-  { key: 'research', file: 'research.html', en: 'Research', zh: '研究', title: 'Research', headingZh: '研究项目', art: 'assets/research-driving.svg' },
+  { key: 'research', file: 'research.html', en: 'Research', zh: '研究', title: 'Research', headingZh: '研究项目', art: 'assets/research-exploration.svg' },
   { key: 'publications', file: 'publications.html', en: 'Publications', zh: '论文', title: 'Publications', headingZh: '论文发表', art: 'assets/publication-papers.svg' },
   { key: 'background', file: 'background.html', en: 'Background', zh: '经历', title: 'Background', headingZh: '个人背景', art: 'assets/background-timeline.svg', cardId: 'about', cardZh: '个人经历' },
   { key: 'course-projects', file: 'course-projects.html', en: 'Course Projects', zh: '课程项目', title: 'Course Projects', art: 'assets/coursework-notes.svg' }
@@ -17,32 +17,24 @@ const bilingual = (tag, en, zh, attributes = '') => `<${tag}${attributes} data-e
 // Presentation assets are separate from the CV text in content/.
 const researchVisuals = {
   'Geographic Generalization in End-to-End Planning at Worldwide Scale': {
-    file: 'geographic-generalization.svg',
-    altEn: 'Planned paths on a city street, a divided highway, and a winding rural road',
-    altZh: '城市街道、分隔式高速公路和乡间弯道上的规划轨迹',
-    captionEn: 'Compare planning across road environments with a shared benchmark.',
-    captionZh: '用同一套评测基准比较不同道路环境下的规划表现。'
+    file: 'geographic-contours.svg',
+    altEn: 'Illustrated map with contour lines and markers across different regions',
+    altZh: '带有等高线和多个地区标记的地图示意'
   },
   'Pushing the Limits of State-of-the-Art End-to-End Driving Planners': {
-    file: 'temporal-planning.svg',
-    altEn: 'Past and current driving frames lead to a predicted future frame and trajectory',
-    altZh: '历史和当前驾驶帧连接到预测的未来场景与轨迹',
-    captionEn: 'Fuse past observations and predict the next scene to help plan the trajectory.',
-    captionZh: '融合历史观测并预测未来场景，辅助轨迹规划。'
+    file: 'temporal-layers.svg',
+    altEn: 'Overlapping translucent layers and traces representing observations over time',
+    altZh: '用半透明叠层和轨迹表示不同时刻的观测'
   },
   'Autonomous Vehicles Test Scenario Generation in Perception-Limited Environments': {
     file: 'perception-scenarios.svg',
     altEn: 'At an intersection, an amber dashed outline shows a detection offset from a crossing car',
-    altZh: '在交叉路口，橙色虚线框与横穿的车辆错开，表示感知误差',
-    captionEn: 'Use sensor errors in distance and speed to generate critical test scenarios.',
-    captionZh: '将距离和速度的感知误差纳入关键测试场景生成。'
+    altZh: '在交叉路口，橙色虚线框与横穿的车辆错开，表示感知误差'
   },
   'Control of Connected and Autonomous Vehicles Utilizing Road Shoulder Lane Based on Deep Reinforcement Learning': {
     file: 'shoulder-lane-control.svg',
     altEn: 'A connected vehicle takes a highlighted shoulder lane beside regular freeway traffic',
-    altZh: '在高速公路的混合车流中，网联车辆驶入高亮的路肩车道',
-    captionEn: 'Evaluate a reinforcement learning policy for shoulder-lane use in mixed traffic.',
-    captionZh: '在混合车流中评估强化学习的路肩车道控制策略。'
+    altZh: '在高速公路的混合车流中，网联车辆驶入高亮的路肩车道'
   }
 };
 const organizationLogos = {
@@ -56,8 +48,7 @@ function decorateResearch(body) {
     const title = copy.match(/<h3[^>]*>([^<]+)<\/h3>/)?.[1];
     const visual = researchVisuals[title];
     if (!visual) return original;
-    const caption = bilingual('figcaption', visual.captionEn, visual.captionZh);
-    return `<article class="project project-with-image"${attributes}><figure class="project-visual"><img src="assets/research/${visual.file}" width="560" height="400" alt="${visual.altEn}" data-alt-en="${visual.altEn}" data-alt-zh="${visual.altZh}" loading="lazy" decoding="async">${caption}</figure><div class="project-copy">${copy}</div></article>`;
+    return `<article class="project project-with-image"${attributes}><figure class="project-visual"><img src="assets/research/${visual.file}" width="560" height="400" alt="${visual.altEn}" data-alt-en="${visual.altEn}" data-alt-zh="${visual.altZh}" loading="lazy" decoding="async"></figure><div class="project-copy">${copy}</div></article>`;
   });
 }
 function decoratePublications(body) {

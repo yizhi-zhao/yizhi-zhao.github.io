@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="300" viewBox="0 0 520 300" fill="none">
+  <defs>
+    <clipPath id="lens"><circle cx="237" cy="129" r="78"/></clipPath>
+  </defs>
+  <path d="m298 192 75 70" stroke="#82a7d4" stroke-width="26" stroke-linecap="round"/>
+  <path d="m298 192 75 70" stroke="#d3e4f9" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="237" cy="129" r="89" fill="#dce9fa" stroke="#749ac9" stroke-width="4"/>
+  <circle cx="237" cy="129" r="78" fill="#f2f7ff" stroke="#a9c4e6" stroke-width="2"/>
+  <g clip-path="url(#lens)">
+    <path d="M150 98h176m-176 31h176m-176 31h176M206 47v164m31-164v164m31-164v164" stroke="#d2e1f4" stroke-width="2"/>
+    <path d="M176 161c30-30 47 11 69-21s41-43 62-38" stroke="#6e9ed2" stroke-width="4" stroke-linecap="round"/>
+    <g fill="#3e74af" stroke="#f2f7ff" stroke-width="3">
+      <circle cx="190" cy="152" r="8"/>
+      <circle cx="240" cy="144" r="8"/>
+      <circle cx="282" cy="104" r="8"/>
+    </g>
+    <g fill="#9cbbe2">
+      <circle cx="196" cy="110" r="5"/>
+      <circle cx="223" cy="171" r="5"/>
+      <circle cx="266" cy="148" r="5"/>
+      <circle cx="250" cy="87" r="5"/>
+    </g>
+  </g>
+  <path d="M142 61h24m-12-12v24m175 11h28m-14-14v28m-203 88h18m-9-9v18" stroke="#a4c0e4" stroke-width="3" stroke-linecap="round"/>
+</svg>
